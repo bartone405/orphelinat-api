@@ -89,12 +89,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'Gedeon@1234',  # <--- colle ici le mot de passe depuis Supabase
-        'HOST': 'db.qrzetjrzctzxopxenhet.supabase.co',
-        'PORT': '5432',
+        'USER': 'postgres.qrzetjrzctzxopxenhet',
+        'PASSWORD': 'Gedeon@1234',
+        'HOST': 'aws-0-eu-north-1.pooler.supabase.com',
+        'PORT': '6543',
     }
 }
+
 
 
 
@@ -116,7 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+#   
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
