@@ -11,7 +11,6 @@ class RegisterUserView(generics.CreateAPIView):
     def post(self, request, *args, **kwargs):
         data = request.data.copy()
 
-        # Hacher le mot de passe
         if 'user_pswd' in data:
             data['user_pswd'] = make_password(data['user_pswd'])
 

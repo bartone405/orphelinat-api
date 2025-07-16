@@ -3,9 +3,12 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth.hashers import check_password
 from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.permissions import AllowAny
 from .models import UsersTb
 
 class LoginUserView(APIView):
+    permission_classes = [AllowAny]  # Permet l'accès sans authentification
+
     def post(self, request):
         username = request.data.get("username")
         password = request.data.get("password")
@@ -18,11 +21,10 @@ class LoginUserView(APIView):
         if not check_password(password, user.user_pswd):
             return Response({'error': 'Mot de passe incorrect'}, status=status.HTTP_401_UNAUTHORIZED)
 
-        # 🔑 Génération manuelle du token
-        refresh = RefreshToken()
-        refresh['user_id'] = user.user_id
-        refresh['username'] = user.username
-        refresh['role'] = user.role.role_name  # 👈 maintenant on met 'admin', 'agent', etc.
+        # Génération correcte des tokens JWT à partir de l'utilisateur
+        refresh = RefreshToken.for_user(user)
+        # Ajouter des claims personnalisés dans le token d'actualisation si besoin
+        refresh['role'] = user.role.role_name
 
         return Response({
             'refresh': str(refresh),
@@ -31,6 +33,6 @@ class LoginUserView(APIView):
                 'user_id': user.user_id,
                 'username': user.username,
                 'role_id': user.role_id,
-                'role_name': user.role.role_name  # 👈 pour l'afficher côté frontend
+                'role_name': user.role.role_name
             }
         })
