@@ -1,3 +1,4 @@
+from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
@@ -8,6 +9,6 @@ schema_view = get_schema_view(
         description="Documentation publique de l'API REST de l'orphelinat",
     ),
     public=True,
-    permission_classes=[],        
-    authentication_classes=[],   
+    permission_classes=(permissions.AllowAny,),
+    url='/api'  # 👈 très important ici !
 )
