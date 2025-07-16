@@ -1,6 +1,13 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import *
+
+from .views import (
+    UsersTbViewSet, OrphelinsTbViewSet, AdoptionsTbViewSet, AdoptantsTbViewSet,
+    DocumentsTbViewSet, DonatorsTbViewSet, GiftsTbViewSet, MedicalVisitsTbViewSet,
+    EducationTbViewSet, CountryTbViewSet, StatusTbViewSet, RolesTbViewSet,
+    SexTbViewSet, ActionsTbViewSet, MessagesTbViewSet, OrphelinatsTbViewSet,
+    stats_view
+)
 from .registration import RegisterUserView
 from .authentication import LoginUserView
 

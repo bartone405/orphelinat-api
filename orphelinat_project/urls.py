@@ -15,11 +15,26 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from rest_framework_simplejwt.views import TokenRefreshView
+from orphelinat_app.swagger import schema_view
+
+# Routes API (pas de format_suffix_patterns ici !)
+api_urlpatterns = [
+    path('api/', include('orphelinat_app.urls')),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+]
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('orphelinat_app.urls')),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh')
+
+    # Routes API directement incluses sans format_suffix_patterns
+    *api_urlpatterns,
+
+  re_path(r'^swagger(?P<file_format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+
+
+
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]
+

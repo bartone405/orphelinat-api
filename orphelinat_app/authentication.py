@@ -1,8 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework import status
 from django.contrib.auth.hashers import check_password
+from rest_framework_simplejwt.tokens import RefreshToken
 from .models import UsersTb
 
 class LoginUserView(APIView):
@@ -11,15 +11,26 @@ class LoginUserView(APIView):
         password = request.data.get("password")
 
         try:
-            user = UsersTb.objects.get(username=username)
+            user = UsersTb.objects.select_related("role").get(username=username)
         except UsersTb.DoesNotExist:
             return Response({'error': 'Utilisateur non trouvé'}, status=status.HTTP_404_NOT_FOUND)
 
-        if check_password(password, user.user_pswd):
-            refresh = RefreshToken.for_user(user)
-            return Response({
-                'refresh': str(refresh),
-                'access': str(refresh.access_token),
-            })
+        if not check_password(password, user.user_pswd):
+            return Response({'error': 'Mot de passe incorrect'}, status=status.HTTP_401_UNAUTHORIZED)
 
-        return Response({'error': 'Mot de passe incorrect'}, status=status.HTTP_401_UNAUTHORIZED)
+        # 🔑 Génération manuelle du token
+        refresh = RefreshToken()
+        refresh['user_id'] = user.user_id
+        refresh['username'] = user.username
+        refresh['role'] = user.role.role_name  # 👈 maintenant on met 'admin', 'agent', etc.
+
+        return Response({
+            'refresh': str(refresh),
+            'access': str(refresh.access_token),
+            'user': {
+                'user_id': user.user_id,
+                'username': user.username,
+                'role_id': user.role_id,
+                'role_name': user.role.role_name  # 👈 pour l'afficher côté frontend
+            }
+        })

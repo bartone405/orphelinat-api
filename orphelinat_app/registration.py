@@ -10,6 +10,7 @@ class RegisterUserView(generics.CreateAPIView):
 
     def post(self, request, *args, **kwargs):
         data = request.data.copy()
+
         # Hacher le mot de passe
         if 'user_pswd' in data:
             data['user_pswd'] = make_password(data['user_pswd'])
@@ -17,4 +18,5 @@ class RegisterUserView(generics.CreateAPIView):
         serializer = self.get_serializer(data=data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
+
         return Response(serializer.data, status=status.HTTP_201_CREATED)

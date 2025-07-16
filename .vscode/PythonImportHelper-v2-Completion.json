@@ -16,6 +16,14 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -80,14 +88,6 @@
         "documentation": {}
     },
     {
-        "label": "RefreshToken",
-        "importPath": "rest_framework_simplejwt.tokens",
-        "description": "rest_framework_simplejwt.tokens",
-        "isExtraImport": true,
-        "detail": "rest_framework_simplejwt.tokens",
-        "documentation": {}
-    },
-    {
         "label": "status",
         "importPath": "rest_framework",
         "description": "rest_framework",
@@ -120,6 +120,14 @@
         "documentation": {}
     },
     {
+        "label": "permissions",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
         "label": "viewsets",
         "importPath": "rest_framework",
         "description": "rest_framework",
@@ -144,6 +152,46 @@
         "documentation": {}
     },
     {
+        "label": "RefreshToken",
+        "importPath": "rest_framework_simplejwt.tokens",
+        "description": "rest_framework_simplejwt.tokens",
+        "isExtraImport": true,
+        "detail": "rest_framework_simplejwt.tokens",
+        "documentation": {}
+    },
+    {
+        "label": "BasePermission",
+        "importPath": "rest_framework.permissions",
+        "description": "rest_framework.permissions",
+        "isExtraImport": true,
+        "detail": "rest_framework.permissions",
+        "documentation": {}
+    },
+    {
+        "label": "IsAuthenticated",
+        "importPath": "rest_framework.permissions",
+        "description": "rest_framework.permissions",
+        "isExtraImport": true,
+        "detail": "rest_framework.permissions",
+        "documentation": {}
+    },
+    {
+        "label": "get_schema_view",
+        "importPath": "drf_yasg.views",
+        "description": "drf_yasg.views",
+        "isExtraImport": true,
+        "detail": "drf_yasg.views",
+        "documentation": {}
+    },
+    {
+        "label": "openapi",
+        "importPath": "drf_yasg",
+        "description": "drf_yasg",
+        "isExtraImport": true,
+        "detail": "drf_yasg",
+        "documentation": {}
+    },
+    {
         "label": "path",
         "importPath": "django.urls",
         "description": "django.urls",
@@ -169,6 +217,14 @@
     },
     {
         "label": "include",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "re_path",
         "importPath": "django.urls",
         "description": "django.urls",
         "isExtraImport": true,
@@ -181,14 +237,6 @@
         "description": "rest_framework.routers",
         "isExtraImport": true,
         "detail": "rest_framework.routers",
-        "documentation": {}
-    },
-    {
-        "label": "api_view",
-        "importPath": "rest_framework.decorators",
-        "description": "rest_framework.decorators",
-        "isExtraImport": true,
-        "detail": "rest_framework.decorators",
         "documentation": {}
     },
     {
@@ -206,6 +254,14 @@
         "importPath": "django_filters",
         "description": "django_filters",
         "detail": "django_filters",
+        "documentation": {}
+    },
+    {
+        "label": "api_view",
+        "importPath": "rest_framework.decorators",
+        "description": "rest_framework.decorators",
+        "isExtraImport": true,
+        "detail": "rest_framework.decorators",
         "documentation": {}
     },
     {
@@ -250,11 +306,27 @@
         "documentation": {}
     },
     {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
         "label": "TokenRefreshView",
         "importPath": "rest_framework_simplejwt.views",
         "description": "rest_framework_simplejwt.views",
         "isExtraImport": true,
         "detail": "rest_framework_simplejwt.views",
+        "documentation": {}
+    },
+    {
+        "label": "schema_view",
+        "importPath": "orphelinat_app.swagger",
+        "description": "orphelinat_app.swagger",
+        "isExtraImport": true,
+        "detail": "orphelinat_app.swagger",
         "documentation": {}
     },
     {
@@ -276,6 +348,15 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "orphelinat_app.migrations.0002_delete_authgroup_delete_authgrouppermissions_and_more",
+        "description": "orphelinat_app.migrations.0002_delete_authgroup_delete_authgrouppermissions_and_more",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('orphelinat_app', '0001_initial'),\n    ]\n    operations = [\n        migrations.DeleteModel(\n            name='AuthGroup',\n        ),\n        migrations.DeleteModel(\n            name='AuthGroupPermissions',",
+        "detail": "orphelinat_app.migrations.0002_delete_authgroup_delete_authgrouppermissions_and_more",
+        "documentation": {}
+    },
+    {
         "label": "OrphelinatAppConfig",
         "kind": 6,
         "importPath": "orphelinat_app.apps",
@@ -289,7 +370,7 @@
         "kind": 6,
         "importPath": "orphelinat_app.authentication",
         "description": "orphelinat_app.authentication",
-        "peekOfCode": "class LoginUserView(APIView):\n    def post(self, request):\n        username = request.data.get(\"username\")\n        password = request.data.get(\"password\")\n        try:\n            user = UsersTb.objects.get(username=username)\n        except UsersTb.DoesNotExist:\n            return Response({'error': 'Utilisateur non trouvé'}, status=status.HTTP_404_NOT_FOUND)\n        if check_password(password, user.user_pswd):\n            refresh = RefreshToken.for_user(user)",
+        "peekOfCode": "class LoginUserView(APIView):\n    def post(self, request):\n        username = request.data.get(\"username\")\n        password = request.data.get(\"password\")\n        try:\n            user = UsersTb.objects.select_related(\"role\").get(username=username)\n        except UsersTb.DoesNotExist:\n            return Response({'error': 'Utilisateur non trouvé'}, status=status.HTTP_404_NOT_FOUND)\n        if not check_password(password, user.user_pswd):\n            return Response({'error': 'Mot de passe incorrect'}, status=status.HTTP_401_UNAUTHORIZED)",
         "detail": "orphelinat_app.authentication",
         "documentation": {}
     },
@@ -307,7 +388,7 @@
         "kind": 6,
         "importPath": "orphelinat_app.models",
         "description": "orphelinat_app.models",
-        "peekOfCode": "class AdoptantsTb(models.Model):\n    adoptant_id = models.AutoField(primary_key=True)\n    sex = models.ForeignKey('SexTb', models.DO_NOTHING)\n    country = models.ForeignKey('CountryTb', models.DO_NOTHING)\n    status = models.ForeignKey('StatusTb', models.DO_NOTHING)\n    adoptant_fname = models.CharField(max_length=255)\n    adoptant_lname = models.CharField(max_length=255)\n    adoptant_mail = models.CharField(max_length=255)\n    adoptant_tel = models.CharField(max_length=20)\n    adoptant_dob = models.DateField()",
+        "peekOfCode": "class AdoptantsTb(models.Model):\n    adoptant_id = models.AutoField(primary_key=True)\n    sex = models.ForeignKey('SexTb', on_delete=models.DO_NOTHING)\n    country = models.ForeignKey('CountryTb', on_delete=models.DO_NOTHING)\n    status = models.ForeignKey('StatusTb', on_delete=models.DO_NOTHING)\n    adoptant_fname = models.CharField(max_length=255)\n    adoptant_lname = models.CharField(max_length=255)\n    adoptant_mail = models.CharField(max_length=255)\n    adoptant_tel = models.CharField(max_length=20)\n    adoptant_dob = models.DateField()",
         "detail": "orphelinat_app.models",
         "documentation": {}
     },
@@ -316,61 +397,7 @@
         "kind": 6,
         "importPath": "orphelinat_app.models",
         "description": "orphelinat_app.models",
-        "peekOfCode": "class AdoptionsTb(models.Model):\n    adoption_id = models.AutoField(primary_key=True)\n    orphelin = models.ForeignKey('OrphelinsTb', models.DO_NOTHING)\n    adoptant = models.ForeignKey(AdoptantsTb, models.DO_NOTHING)\n    adoption_date = models.DateField()\n    status = models.ForeignKey('StatusTb', models.DO_NOTHING)\n    adoption_desc = models.TextField(blank=True, null=True)\n    adoption_date_created = models.DateTimeField()\n    class Meta:\n        managed = False",
-        "detail": "orphelinat_app.models",
-        "documentation": {}
-    },
-    {
-        "label": "AuthGroup",
-        "kind": 6,
-        "importPath": "orphelinat_app.models",
-        "description": "orphelinat_app.models",
-        "peekOfCode": "class AuthGroup(models.Model):\n    name = models.CharField(unique=True, max_length=150)\n    class Meta:\n        managed = False\n        db_table = 'auth_group'\nclass AuthGroupPermissions(models.Model):\n    id = models.BigAutoField(primary_key=True)\n    group = models.ForeignKey(AuthGroup, models.DO_NOTHING)\n    permission = models.ForeignKey('AuthPermission', models.DO_NOTHING)\n    class Meta:",
-        "detail": "orphelinat_app.models",
-        "documentation": {}
-    },
-    {
-        "label": "AuthGroupPermissions",
-        "kind": 6,
-        "importPath": "orphelinat_app.models",
-        "description": "orphelinat_app.models",
-        "peekOfCode": "class AuthGroupPermissions(models.Model):\n    id = models.BigAutoField(primary_key=True)\n    group = models.ForeignKey(AuthGroup, models.DO_NOTHING)\n    permission = models.ForeignKey('AuthPermission', models.DO_NOTHING)\n    class Meta:\n        managed = False\n        db_table = 'auth_group_permissions'\n        unique_together = (('group', 'permission'),)\nclass AuthPermission(models.Model):\n    name = models.CharField(max_length=255)",
-        "detail": "orphelinat_app.models",
-        "documentation": {}
-    },
-    {
-        "label": "AuthPermission",
-        "kind": 6,
-        "importPath": "orphelinat_app.models",
-        "description": "orphelinat_app.models",
-        "peekOfCode": "class AuthPermission(models.Model):\n    name = models.CharField(max_length=255)\n    content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING)\n    codename = models.CharField(max_length=100)\n    class Meta:\n        managed = False\n        db_table = 'auth_permission'\n        unique_together = (('content_type', 'codename'),)\nclass AuthUser(models.Model):\n    password = models.CharField(max_length=128)",
-        "detail": "orphelinat_app.models",
-        "documentation": {}
-    },
-    {
-        "label": "AuthUser",
-        "kind": 6,
-        "importPath": "orphelinat_app.models",
-        "description": "orphelinat_app.models",
-        "peekOfCode": "class AuthUser(models.Model):\n    password = models.CharField(max_length=128)\n    last_login = models.DateTimeField(blank=True, null=True)\n    is_superuser = models.BooleanField()\n    username = models.CharField(unique=True, max_length=150)\n    first_name = models.CharField(max_length=150)\n    last_name = models.CharField(max_length=150)\n    email = models.CharField(max_length=254)\n    is_staff = models.BooleanField()\n    is_active = models.BooleanField()",
-        "detail": "orphelinat_app.models",
-        "documentation": {}
-    },
-    {
-        "label": "AuthUserGroups",
-        "kind": 6,
-        "importPath": "orphelinat_app.models",
-        "description": "orphelinat_app.models",
-        "peekOfCode": "class AuthUserGroups(models.Model):\n    id = models.BigAutoField(primary_key=True)\n    user = models.ForeignKey(AuthUser, models.DO_NOTHING)\n    group = models.ForeignKey(AuthGroup, models.DO_NOTHING)\n    class Meta:\n        managed = False\n        db_table = 'auth_user_groups'\n        unique_together = (('user', 'group'),)\nclass AuthUserUserPermissions(models.Model):\n    id = models.BigAutoField(primary_key=True)",
-        "detail": "orphelinat_app.models",
-        "documentation": {}
-    },
-    {
-        "label": "AuthUserUserPermissions",
-        "kind": 6,
-        "importPath": "orphelinat_app.models",
-        "description": "orphelinat_app.models",
-        "peekOfCode": "class AuthUserUserPermissions(models.Model):\n    id = models.BigAutoField(primary_key=True)\n    user = models.ForeignKey(AuthUser, models.DO_NOTHING)\n    permission = models.ForeignKey(AuthPermission, models.DO_NOTHING)\n    class Meta:\n        managed = False\n        db_table = 'auth_user_user_permissions'\n        unique_together = (('user', 'permission'),)\nclass CountryTb(models.Model):\n    country_id = models.AutoField(primary_key=True)",
+        "peekOfCode": "class AdoptionsTb(models.Model):\n    adoption_id = models.AutoField(primary_key=True)\n    orphelin = models.ForeignKey('OrphelinsTb', on_delete=models.DO_NOTHING)\n    adoptant = models.ForeignKey(AdoptantsTb, on_delete=models.DO_NOTHING)\n    adoption_date = models.DateField()\n    status = models.ForeignKey('StatusTb', on_delete=models.DO_NOTHING)\n    adoption_desc = models.TextField(blank=True, null=True)\n    adoption_date_created = models.DateTimeField()\n    class Meta:\n        managed = False",
         "detail": "orphelinat_app.models",
         "documentation": {}
     },
@@ -384,47 +411,11 @@
         "documentation": {}
     },
     {
-        "label": "DjangoAdminLog",
-        "kind": 6,
-        "importPath": "orphelinat_app.models",
-        "description": "orphelinat_app.models",
-        "peekOfCode": "class DjangoAdminLog(models.Model):\n    action_time = models.DateTimeField()\n    object_id = models.TextField(blank=True, null=True)\n    object_repr = models.CharField(max_length=200)\n    action_flag = models.SmallIntegerField()\n    change_message = models.TextField()\n    content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING, blank=True, null=True)\n    user = models.ForeignKey(AuthUser, models.DO_NOTHING)\n    class Meta:\n        managed = False",
-        "detail": "orphelinat_app.models",
-        "documentation": {}
-    },
-    {
-        "label": "DjangoContentType",
-        "kind": 6,
-        "importPath": "orphelinat_app.models",
-        "description": "orphelinat_app.models",
-        "peekOfCode": "class DjangoContentType(models.Model):\n    app_label = models.CharField(max_length=100)\n    model = models.CharField(max_length=100)\n    class Meta:\n        managed = False\n        db_table = 'django_content_type'\n        unique_together = (('app_label', 'model'),)\nclass DjangoMigrations(models.Model):\n    id = models.BigAutoField(primary_key=True)\n    app = models.CharField(max_length=255)",
-        "detail": "orphelinat_app.models",
-        "documentation": {}
-    },
-    {
-        "label": "DjangoMigrations",
-        "kind": 6,
-        "importPath": "orphelinat_app.models",
-        "description": "orphelinat_app.models",
-        "peekOfCode": "class DjangoMigrations(models.Model):\n    id = models.BigAutoField(primary_key=True)\n    app = models.CharField(max_length=255)\n    name = models.CharField(max_length=255)\n    applied = models.DateTimeField()\n    class Meta:\n        managed = False\n        db_table = 'django_migrations'\nclass DjangoSession(models.Model):\n    session_key = models.CharField(primary_key=True, max_length=40)",
-        "detail": "orphelinat_app.models",
-        "documentation": {}
-    },
-    {
-        "label": "DjangoSession",
-        "kind": 6,
-        "importPath": "orphelinat_app.models",
-        "description": "orphelinat_app.models",
-        "peekOfCode": "class DjangoSession(models.Model):\n    session_key = models.CharField(primary_key=True, max_length=40)\n    session_data = models.TextField()\n    expire_date = models.DateTimeField()\n    class Meta:\n        managed = False\n        db_table = 'django_session'\nclass DocumentsTb(models.Model):\n    doc_id = models.AutoField(primary_key=True)\n    orphelin = models.ForeignKey('OrphelinsTb', models.DO_NOTHING)",
-        "detail": "orphelinat_app.models",
-        "documentation": {}
-    },
-    {
         "label": "DocumentsTb",
         "kind": 6,
         "importPath": "orphelinat_app.models",
         "description": "orphelinat_app.models",
-        "peekOfCode": "class DocumentsTb(models.Model):\n    doc_id = models.AutoField(primary_key=True)\n    orphelin = models.ForeignKey('OrphelinsTb', models.DO_NOTHING)\n    doc_type = models.CharField(max_length=100)\n    doc_url = models.TextField()\n    doc_description = models.TextField(blank=True, null=True)\n    doc_date_uploaded = models.DateTimeField()\n    class Meta:\n        managed = False\n        db_table = 'documents_tb'",
+        "peekOfCode": "class DocumentsTb(models.Model):\n    doc_id = models.AutoField(primary_key=True)\n    orphelin = models.ForeignKey('OrphelinsTb', on_delete=models.DO_NOTHING)\n    doc_type = models.CharField(max_length=100)\n    doc_url = models.TextField()\n    doc_description = models.TextField(blank=True, null=True)\n    doc_date_uploaded = models.DateTimeField()\n    class Meta:\n        managed = False\n        db_table = 'documents_tb'",
         "detail": "orphelinat_app.models",
         "documentation": {}
     },
@@ -433,7 +424,7 @@
         "kind": 6,
         "importPath": "orphelinat_app.models",
         "description": "orphelinat_app.models",
-        "peekOfCode": "class DonatorsTb(models.Model):\n    donator_id = models.AutoField(primary_key=True)\n    sex = models.ForeignKey('SexTb', models.DO_NOTHING)\n    country = models.ForeignKey(CountryTb, models.DO_NOTHING)\n    status = models.ForeignKey('StatusTb', models.DO_NOTHING)\n    donator_fname = models.CharField(max_length=255)\n    donator_lname = models.CharField(max_length=255)\n    donator_mail = models.CharField(max_length=255)\n    donator_tel = models.CharField(max_length=20)\n    donator_dob = models.DateField()",
+        "peekOfCode": "class DonatorsTb(models.Model):\n    donator_id = models.AutoField(primary_key=True)\n    sex = models.ForeignKey('SexTb', on_delete=models.DO_NOTHING)\n    country = models.ForeignKey(CountryTb, on_delete=models.DO_NOTHING)\n    status = models.ForeignKey('StatusTb', on_delete=models.DO_NOTHING)\n    donator_fname = models.CharField(max_length=255)\n    donator_lname = models.CharField(max_length=255)\n    donator_mail = models.CharField(max_length=255)\n    donator_tel = models.CharField(max_length=20)\n    donator_dob = models.DateField()",
         "detail": "orphelinat_app.models",
         "documentation": {}
     },
@@ -442,7 +433,7 @@
         "kind": 6,
         "importPath": "orphelinat_app.models",
         "description": "orphelinat_app.models",
-        "peekOfCode": "class EducationTb(models.Model):\n    edu_id = models.AutoField(primary_key=True)\n    orphelin = models.ForeignKey('OrphelinsTb', models.DO_NOTHING)\n    school_name = models.CharField(max_length=255)\n    academic_level = models.CharField(max_length=100)\n    academic_year = models.CharField(max_length=20)\n    education_notes = models.TextField(blank=True, null=True)\n    edu_date_created = models.DateTimeField()\n    class Meta:\n        managed = False",
+        "peekOfCode": "class EducationTb(models.Model):\n    edu_id = models.AutoField(primary_key=True)\n    orphelin = models.ForeignKey('OrphelinsTb', on_delete=models.DO_NOTHING)\n    school_name = models.CharField(max_length=255)\n    academic_level = models.CharField(max_length=100)\n    academic_year = models.CharField(max_length=20)\n    education_notes = models.TextField(blank=True, null=True)\n    edu_date_created = models.DateTimeField()\n    class Meta:\n        managed = False",
         "detail": "orphelinat_app.models",
         "documentation": {}
     },
@@ -451,7 +442,7 @@
         "kind": 6,
         "importPath": "orphelinat_app.models",
         "description": "orphelinat_app.models",
-        "peekOfCode": "class GiftsTb(models.Model):\n    gift_id = models.AutoField(primary_key=True)\n    donator = models.ForeignKey(DonatorsTb, models.DO_NOTHING)\n    status = models.ForeignKey('StatusTb', models.DO_NOTHING)\n    gift_name = models.CharField(max_length=255)\n    gift_desc = models.CharField(max_length=255)\n    gift_date_created = models.DateTimeField()\n    gift_date_update = models.DateTimeField(blank=True, null=True)\n    class Meta:\n        managed = False",
+        "peekOfCode": "class GiftsTb(models.Model):\n    gift_id = models.AutoField(primary_key=True)\n    donator = models.ForeignKey(DonatorsTb, on_delete=models.DO_NOTHING)\n    status = models.ForeignKey('StatusTb', on_delete=models.DO_NOTHING)\n    gift_name = models.CharField(max_length=255)\n    gift_desc = models.CharField(max_length=255)\n    gift_date_created = models.DateTimeField()\n    gift_date_update = models.DateTimeField(blank=True, null=True)\n    class Meta:\n        managed = False",
         "detail": "orphelinat_app.models",
         "documentation": {}
     },
@@ -460,7 +451,7 @@
         "kind": 6,
         "importPath": "orphelinat_app.models",
         "description": "orphelinat_app.models",
-        "peekOfCode": "class MedicalVisitsTb(models.Model):\n    visit_id = models.AutoField(primary_key=True)\n    orphelin = models.ForeignKey('OrphelinsTb', models.DO_NOTHING)\n    visit_date = models.DateField()\n    diagnosis = models.TextField(blank=True, null=True)\n    treatment = models.TextField(blank=True, null=True)\n    doctor_name = models.CharField(max_length=255, blank=True, null=True)\n    visit_notes = models.TextField(blank=True, null=True)\n    visit_date_created = models.DateTimeField()\n    class Meta:",
+        "peekOfCode": "class MedicalVisitsTb(models.Model):\n    visit_id = models.AutoField(primary_key=True)\n    orphelin = models.ForeignKey('OrphelinsTb', on_delete=models.DO_NOTHING)\n    visit_date = models.DateField()\n    diagnosis = models.TextField(blank=True, null=True)\n    treatment = models.TextField(blank=True, null=True)\n    doctor_name = models.CharField(max_length=255, blank=True, null=True)\n    visit_notes = models.TextField(blank=True, null=True)\n    visit_date_created = models.DateTimeField()\n    class Meta:",
         "detail": "orphelinat_app.models",
         "documentation": {}
     },
@@ -469,7 +460,7 @@
         "kind": 6,
         "importPath": "orphelinat_app.models",
         "description": "orphelinat_app.models",
-        "peekOfCode": "class MessagesTb(models.Model):\n    message_id = models.AutoField(primary_key=True)\n    sender = models.ForeignKey('UsersTb', models.DO_NOTHING)\n    receiver = models.ForeignKey('UsersTb', models.DO_NOTHING, related_name='messagestb_receiver_set')\n    message_subject = models.CharField(max_length=255)\n    message_content = models.TextField()\n    message_sent_at = models.DateTimeField()\n    class Meta:\n        managed = False\n        db_table = 'messages_tb'",
+        "peekOfCode": "class MessagesTb(models.Model):\n    message_id = models.AutoField(primary_key=True)\n    sender = models.ForeignKey('UsersTb', on_delete=models.DO_NOTHING)\n    receiver = models.ForeignKey('UsersTb', on_delete=models.DO_NOTHING, related_name='messagestb_receiver_set')\n    message_subject = models.CharField(max_length=255)\n    message_content = models.TextField()\n    message_sent_at = models.DateTimeField()\n    class Meta:\n        managed = False\n        db_table = 'messages_tb'",
         "detail": "orphelinat_app.models",
         "documentation": {}
     },
@@ -487,7 +478,7 @@
         "kind": 6,
         "importPath": "orphelinat_app.models",
         "description": "orphelinat_app.models",
-        "peekOfCode": "class OrphelinsTb(models.Model):\n    orphelin_id = models.AutoField(primary_key=True)\n    orphelinat = models.ForeignKey(OrphelinatsTb, models.DO_NOTHING)\n    sex = models.ForeignKey('SexTb', models.DO_NOTHING)\n    country = models.ForeignKey(CountryTb, models.DO_NOTHING)\n    status = models.ForeignKey('StatusTb', models.DO_NOTHING)\n    orphelin_fname = models.CharField(max_length=255)\n    orphelin_lname = models.CharField(max_length=255)\n    orphelin_father_name = models.CharField(max_length=255)\n    orphelin_mother_name = models.CharField(max_length=255)",
+        "peekOfCode": "class OrphelinsTb(models.Model):\n    orphelin_id = models.AutoField(primary_key=True)\n    orphelinat = models.ForeignKey(OrphelinatsTb, on_delete=models.DO_NOTHING)\n    sex = models.ForeignKey('SexTb', on_delete=models.DO_NOTHING)\n    country = models.ForeignKey(CountryTb, on_delete=models.DO_NOTHING)\n    status = models.ForeignKey('StatusTb', on_delete=models.DO_NOTHING)\n    orphelin_fname = models.CharField(max_length=255)\n    orphelin_lname = models.CharField(max_length=255)\n    orphelin_father_name = models.CharField(max_length=255)\n    orphelin_mother_name = models.CharField(max_length=255)",
         "detail": "orphelinat_app.models",
         "documentation": {}
     },
@@ -523,8 +514,17 @@
         "kind": 6,
         "importPath": "orphelinat_app.models",
         "description": "orphelinat_app.models",
-        "peekOfCode": "class UsersTb(models.Model):\n    user_id = models.AutoField(primary_key=True)\n    role = models.ForeignKey(RolesTb, models.DO_NOTHING)\n    sex = models.ForeignKey(SexTb, models.DO_NOTHING)\n    country = models.ForeignKey(CountryTb, models.DO_NOTHING)\n    status = models.ForeignKey(StatusTb, models.DO_NOTHING)\n    user_fname = models.CharField(max_length=255)\n    user_lname = models.CharField(max_length=255)\n    user_mail = models.CharField(unique=True, max_length=255)\n    username = models.CharField(unique=True, max_length=255)",
+        "peekOfCode": "class UsersTb(models.Model):\n    user_id = models.AutoField(primary_key=True)\n    role = models.ForeignKey(RolesTb, on_delete=models.DO_NOTHING)\n    sex = models.ForeignKey(SexTb, on_delete=models.DO_NOTHING)\n    country = models.ForeignKey(CountryTb, on_delete=models.DO_NOTHING)\n    status = models.ForeignKey(StatusTb, on_delete=models.DO_NOTHING)\n    user_fname = models.CharField(max_length=255)\n    user_lname = models.CharField(max_length=255)\n    user_mail = models.CharField(unique=True, max_length=255)\n    username = models.CharField(unique=True, max_length=255)",
         "detail": "orphelinat_app.models",
+        "documentation": {}
+    },
+    {
+        "label": "IsAdminRole",
+        "kind": 6,
+        "importPath": "orphelinat_app.permissions",
+        "description": "orphelinat_app.permissions",
+        "peekOfCode": "class IsAdminRole(BasePermission):\n    \"\"\"\n    Autorise uniquement les utilisateurs avec le rôle 'admin',\n    récupéré depuis le token JWT.\n    \"\"\"\n    def has_permission(self, request, view):\n        token = request.auth  # token JWT décodé\n        if not token:\n            return False\n        role = token.get('role', '').lower() if isinstance(token, dict) else ''",
+        "detail": "orphelinat_app.permissions",
         "documentation": {}
     },
     {
@@ -681,6 +681,15 @@
         "documentation": {}
     },
     {
+        "label": "schema_view",
+        "kind": 5,
+        "importPath": "orphelinat_app.swagger",
+        "description": "orphelinat_app.swagger",
+        "peekOfCode": "schema_view = get_schema_view(\n    openapi.Info(\n        title=\"Orphelinat API\",\n        default_version='v1',\n        description=\"Documentation de l'API REST de gestion de l'orphelinat\",\n    ),\n    public=True,\n    permission_classes=(permissions.AllowAny,),\n)",
+        "detail": "orphelinat_app.swagger",
+        "documentation": {}
+    },
+    {
         "label": "router",
         "kind": 5,
         "importPath": "orphelinat_app.urls",
@@ -703,7 +712,7 @@
         "kind": 6,
         "importPath": "orphelinat_app.views",
         "description": "orphelinat_app.views",
-        "peekOfCode": "class OrphelinFilter(django_filters.FilterSet):\n    class Meta:\n        model = OrphelinsTb\n        fields = {\n            'orphelin_fname': ['icontains'],\n            'orphelin_dob': ['year__lte'],\n        }\n# 🔄 ViewSets pour chaque modèle\nclass UsersTbViewSet(viewsets.ModelViewSet):\n    queryset = UsersTb.objects.all()",
+        "peekOfCode": "class OrphelinFilter(django_filters.FilterSet):\n    class Meta:\n        model = OrphelinsTb\n        fields = {\n            'orphelin_fname': ['icontains'],\n            'orphelin_dob': ['year__lte'],\n            'orphelin_lname': ['icontains'],\n        }\nclass UsersTbViewSet(viewsets.ModelViewSet):\n    queryset = UsersTb.objects.all()",
         "detail": "orphelinat_app.views",
         "documentation": {}
     },
@@ -712,7 +721,7 @@
         "kind": 6,
         "importPath": "orphelinat_app.views",
         "description": "orphelinat_app.views",
-        "peekOfCode": "class UsersTbViewSet(viewsets.ModelViewSet):\n    queryset = UsersTb.objects.all()\n    serializer_class = UsersTbSerializer\nclass OrphelinsTbViewSet(viewsets.ModelViewSet):\n    queryset = OrphelinsTb.objects.select_related('orphelinat', 'sex').all()\n    serializer_class = OrphelinsTbSerializer\n    filter_backends = [DjangoFilterBackend]\n    filterset_class = OrphelinFilter\nclass AdoptionsTbViewSet(viewsets.ModelViewSet):\n    queryset = AdoptionsTb.objects.select_related('orphelin', 'adoptant').all()",
+        "peekOfCode": "class UsersTbViewSet(viewsets.ModelViewSet):\n    queryset = UsersTb.objects.all()\n    serializer_class = UsersTbSerializer\n    permission_classes = [IsAuthenticated, IsAdminRole]\nclass OrphelinsTbViewSet(viewsets.ModelViewSet):\n    queryset = OrphelinsTb.objects.select_related('orphelinat', 'sex', 'country', 'status').all()\n    serializer_class = OrphelinsTbSerializer\n    permission_classes = [IsAuthenticated]\n    filter_backends = [DjangoFilterBackend]\n    filterset_class = OrphelinFilter",
         "detail": "orphelinat_app.views",
         "documentation": {}
     },
@@ -721,7 +730,7 @@
         "kind": 6,
         "importPath": "orphelinat_app.views",
         "description": "orphelinat_app.views",
-        "peekOfCode": "class OrphelinsTbViewSet(viewsets.ModelViewSet):\n    queryset = OrphelinsTb.objects.select_related('orphelinat', 'sex').all()\n    serializer_class = OrphelinsTbSerializer\n    filter_backends = [DjangoFilterBackend]\n    filterset_class = OrphelinFilter\nclass AdoptionsTbViewSet(viewsets.ModelViewSet):\n    queryset = AdoptionsTb.objects.select_related('orphelin', 'adoptant').all()\n    serializer_class = AdoptionsTbSerializer\nclass AdoptantsTbViewSet(viewsets.ModelViewSet):\n    queryset = AdoptantsTb.objects.all()",
+        "peekOfCode": "class OrphelinsTbViewSet(viewsets.ModelViewSet):\n    queryset = OrphelinsTb.objects.select_related('orphelinat', 'sex', 'country', 'status').all()\n    serializer_class = OrphelinsTbSerializer\n    permission_classes = [IsAuthenticated]\n    filter_backends = [DjangoFilterBackend]\n    filterset_class = OrphelinFilter\nclass AdoptionsTbViewSet(viewsets.ModelViewSet):\n    queryset = AdoptionsTb.objects.select_related('orphelin', 'adoptant', 'status').all()\n    serializer_class = AdoptionsTbSerializer\n    permission_classes = [IsAuthenticated]",
         "detail": "orphelinat_app.views",
         "documentation": {}
     },
@@ -730,7 +739,7 @@
         "kind": 6,
         "importPath": "orphelinat_app.views",
         "description": "orphelinat_app.views",
-        "peekOfCode": "class AdoptionsTbViewSet(viewsets.ModelViewSet):\n    queryset = AdoptionsTb.objects.select_related('orphelin', 'adoptant').all()\n    serializer_class = AdoptionsTbSerializer\nclass AdoptantsTbViewSet(viewsets.ModelViewSet):\n    queryset = AdoptantsTb.objects.all()\n    serializer_class = AdoptantsTbSerializer\nclass DocumentsTbViewSet(viewsets.ModelViewSet):\n    queryset = DocumentsTb.objects.all()\n    serializer_class = DocumentsTbSerializer\nclass DonatorsTbViewSet(viewsets.ModelViewSet):",
+        "peekOfCode": "class AdoptionsTbViewSet(viewsets.ModelViewSet):\n    queryset = AdoptionsTb.objects.select_related('orphelin', 'adoptant', 'status').all()\n    serializer_class = AdoptionsTbSerializer\n    permission_classes = [IsAuthenticated]\nclass AdoptantsTbViewSet(viewsets.ModelViewSet):\n    queryset = AdoptantsTb.objects.select_related('sex', 'country', 'status').all()\n    serializer_class = AdoptantsTbSerializer\n    permission_classes = [IsAuthenticated]\nclass DocumentsTbViewSet(viewsets.ModelViewSet):\n    queryset = DocumentsTb.objects.select_related('orphelin').all()",
         "detail": "orphelinat_app.views",
         "documentation": {}
     },
@@ -739,7 +748,7 @@
         "kind": 6,
         "importPath": "orphelinat_app.views",
         "description": "orphelinat_app.views",
-        "peekOfCode": "class AdoptantsTbViewSet(viewsets.ModelViewSet):\n    queryset = AdoptantsTb.objects.all()\n    serializer_class = AdoptantsTbSerializer\nclass DocumentsTbViewSet(viewsets.ModelViewSet):\n    queryset = DocumentsTb.objects.all()\n    serializer_class = DocumentsTbSerializer\nclass DonatorsTbViewSet(viewsets.ModelViewSet):\n    queryset = DonatorsTb.objects.all()\n    serializer_class = DonatorsTbSerializer\nclass GiftsTbViewSet(viewsets.ModelViewSet):",
+        "peekOfCode": "class AdoptantsTbViewSet(viewsets.ModelViewSet):\n    queryset = AdoptantsTb.objects.select_related('sex', 'country', 'status').all()\n    serializer_class = AdoptantsTbSerializer\n    permission_classes = [IsAuthenticated]\nclass DocumentsTbViewSet(viewsets.ModelViewSet):\n    queryset = DocumentsTb.objects.select_related('orphelin').all()\n    serializer_class = DocumentsTbSerializer\n    permission_classes = [IsAuthenticated]\nclass DonatorsTbViewSet(viewsets.ModelViewSet):\n    queryset = DonatorsTb.objects.select_related('sex', 'country', 'status').all()",
         "detail": "orphelinat_app.views",
         "documentation": {}
     },
@@ -748,7 +757,7 @@
         "kind": 6,
         "importPath": "orphelinat_app.views",
         "description": "orphelinat_app.views",
-        "peekOfCode": "class DocumentsTbViewSet(viewsets.ModelViewSet):\n    queryset = DocumentsTb.objects.all()\n    serializer_class = DocumentsTbSerializer\nclass DonatorsTbViewSet(viewsets.ModelViewSet):\n    queryset = DonatorsTb.objects.all()\n    serializer_class = DonatorsTbSerializer\nclass GiftsTbViewSet(viewsets.ModelViewSet):\n    queryset = GiftsTb.objects.all()\n    serializer_class = GiftsTbSerializer\nclass MedicalVisitsTbViewSet(viewsets.ModelViewSet):",
+        "peekOfCode": "class DocumentsTbViewSet(viewsets.ModelViewSet):\n    queryset = DocumentsTb.objects.select_related('orphelin').all()\n    serializer_class = DocumentsTbSerializer\n    permission_classes = [IsAuthenticated]\nclass DonatorsTbViewSet(viewsets.ModelViewSet):\n    queryset = DonatorsTb.objects.select_related('sex', 'country', 'status').all()\n    serializer_class = DonatorsTbSerializer\n    permission_classes = [IsAuthenticated]\nclass GiftsTbViewSet(viewsets.ModelViewSet):\n    queryset = GiftsTb.objects.select_related('donator', 'status').all()",
         "detail": "orphelinat_app.views",
         "documentation": {}
     },
@@ -757,7 +766,7 @@
         "kind": 6,
         "importPath": "orphelinat_app.views",
         "description": "orphelinat_app.views",
-        "peekOfCode": "class DonatorsTbViewSet(viewsets.ModelViewSet):\n    queryset = DonatorsTb.objects.all()\n    serializer_class = DonatorsTbSerializer\nclass GiftsTbViewSet(viewsets.ModelViewSet):\n    queryset = GiftsTb.objects.all()\n    serializer_class = GiftsTbSerializer\nclass MedicalVisitsTbViewSet(viewsets.ModelViewSet):\n    queryset = MedicalVisitsTb.objects.all()\n    serializer_class = MedicalVisitsTbSerializer\nclass EducationTbViewSet(viewsets.ModelViewSet):",
+        "peekOfCode": "class DonatorsTbViewSet(viewsets.ModelViewSet):\n    queryset = DonatorsTb.objects.select_related('sex', 'country', 'status').all()\n    serializer_class = DonatorsTbSerializer\n    permission_classes = [IsAuthenticated]\nclass GiftsTbViewSet(viewsets.ModelViewSet):\n    queryset = GiftsTb.objects.select_related('donator', 'status').all()\n    serializer_class = GiftsTbSerializer\n    permission_classes = [IsAuthenticated]\nclass MedicalVisitsTbViewSet(viewsets.ModelViewSet):\n    queryset = MedicalVisitsTb.objects.select_related('orphelin').all()",
         "detail": "orphelinat_app.views",
         "documentation": {}
     },
@@ -766,7 +775,7 @@
         "kind": 6,
         "importPath": "orphelinat_app.views",
         "description": "orphelinat_app.views",
-        "peekOfCode": "class GiftsTbViewSet(viewsets.ModelViewSet):\n    queryset = GiftsTb.objects.all()\n    serializer_class = GiftsTbSerializer\nclass MedicalVisitsTbViewSet(viewsets.ModelViewSet):\n    queryset = MedicalVisitsTb.objects.all()\n    serializer_class = MedicalVisitsTbSerializer\nclass EducationTbViewSet(viewsets.ModelViewSet):\n    queryset = EducationTb.objects.all()\n    serializer_class = EducationTbSerializer\nclass CountryTbViewSet(viewsets.ModelViewSet):",
+        "peekOfCode": "class GiftsTbViewSet(viewsets.ModelViewSet):\n    queryset = GiftsTb.objects.select_related('donator', 'status').all()\n    serializer_class = GiftsTbSerializer\n    permission_classes = [IsAuthenticated]\nclass MedicalVisitsTbViewSet(viewsets.ModelViewSet):\n    queryset = MedicalVisitsTb.objects.select_related('orphelin').all()\n    serializer_class = MedicalVisitsTbSerializer\n    permission_classes = [IsAuthenticated]\nclass EducationTbViewSet(viewsets.ModelViewSet):\n    queryset = EducationTb.objects.select_related('orphelin').all()",
         "detail": "orphelinat_app.views",
         "documentation": {}
     },
@@ -775,7 +784,7 @@
         "kind": 6,
         "importPath": "orphelinat_app.views",
         "description": "orphelinat_app.views",
-        "peekOfCode": "class MedicalVisitsTbViewSet(viewsets.ModelViewSet):\n    queryset = MedicalVisitsTb.objects.all()\n    serializer_class = MedicalVisitsTbSerializer\nclass EducationTbViewSet(viewsets.ModelViewSet):\n    queryset = EducationTb.objects.all()\n    serializer_class = EducationTbSerializer\nclass CountryTbViewSet(viewsets.ModelViewSet):\n    queryset = CountryTb.objects.all()\n    serializer_class = CountryTbSerializer\nclass StatusTbViewSet(viewsets.ModelViewSet):",
+        "peekOfCode": "class MedicalVisitsTbViewSet(viewsets.ModelViewSet):\n    queryset = MedicalVisitsTb.objects.select_related('orphelin').all()\n    serializer_class = MedicalVisitsTbSerializer\n    permission_classes = [IsAuthenticated]\nclass EducationTbViewSet(viewsets.ModelViewSet):\n    queryset = EducationTb.objects.select_related('orphelin').all()\n    serializer_class = EducationTbSerializer\n    permission_classes = [IsAuthenticated]\nclass CountryTbViewSet(viewsets.ModelViewSet):\n    queryset = CountryTb.objects.all()",
         "detail": "orphelinat_app.views",
         "documentation": {}
     },
@@ -784,7 +793,7 @@
         "kind": 6,
         "importPath": "orphelinat_app.views",
         "description": "orphelinat_app.views",
-        "peekOfCode": "class EducationTbViewSet(viewsets.ModelViewSet):\n    queryset = EducationTb.objects.all()\n    serializer_class = EducationTbSerializer\nclass CountryTbViewSet(viewsets.ModelViewSet):\n    queryset = CountryTb.objects.all()\n    serializer_class = CountryTbSerializer\nclass StatusTbViewSet(viewsets.ModelViewSet):\n    queryset = StatusTb.objects.all()\n    serializer_class = StatusTbSerializer\nclass RolesTbViewSet(viewsets.ModelViewSet):",
+        "peekOfCode": "class EducationTbViewSet(viewsets.ModelViewSet):\n    queryset = EducationTb.objects.select_related('orphelin').all()\n    serializer_class = EducationTbSerializer\n    permission_classes = [IsAuthenticated]\nclass CountryTbViewSet(viewsets.ModelViewSet):\n    queryset = CountryTb.objects.all()\n    serializer_class = CountryTbSerializer\n    permission_classes = [IsAuthenticated]\nclass StatusTbViewSet(viewsets.ModelViewSet):\n    queryset = StatusTb.objects.all()",
         "detail": "orphelinat_app.views",
         "documentation": {}
     },
@@ -793,7 +802,7 @@
         "kind": 6,
         "importPath": "orphelinat_app.views",
         "description": "orphelinat_app.views",
-        "peekOfCode": "class CountryTbViewSet(viewsets.ModelViewSet):\n    queryset = CountryTb.objects.all()\n    serializer_class = CountryTbSerializer\nclass StatusTbViewSet(viewsets.ModelViewSet):\n    queryset = StatusTb.objects.all()\n    serializer_class = StatusTbSerializer\nclass RolesTbViewSet(viewsets.ModelViewSet):\n    queryset = RolesTb.objects.all()\n    serializer_class = RolesTbSerializer\nclass SexTbViewSet(viewsets.ModelViewSet):",
+        "peekOfCode": "class CountryTbViewSet(viewsets.ModelViewSet):\n    queryset = CountryTb.objects.all()\n    serializer_class = CountryTbSerializer\n    permission_classes = [IsAuthenticated]\nclass StatusTbViewSet(viewsets.ModelViewSet):\n    queryset = StatusTb.objects.all()\n    serializer_class = StatusTbSerializer\n    permission_classes = [IsAuthenticated]\nclass RolesTbViewSet(viewsets.ModelViewSet):\n    queryset = RolesTb.objects.all()",
         "detail": "orphelinat_app.views",
         "documentation": {}
     },
@@ -802,7 +811,7 @@
         "kind": 6,
         "importPath": "orphelinat_app.views",
         "description": "orphelinat_app.views",
-        "peekOfCode": "class StatusTbViewSet(viewsets.ModelViewSet):\n    queryset = StatusTb.objects.all()\n    serializer_class = StatusTbSerializer\nclass RolesTbViewSet(viewsets.ModelViewSet):\n    queryset = RolesTb.objects.all()\n    serializer_class = RolesTbSerializer\nclass SexTbViewSet(viewsets.ModelViewSet):\n    queryset = SexTb.objects.all()\n    serializer_class = SexTbSerializer\nclass ActionsTbViewSet(viewsets.ModelViewSet):",
+        "peekOfCode": "class StatusTbViewSet(viewsets.ModelViewSet):\n    queryset = StatusTb.objects.all()\n    serializer_class = StatusTbSerializer\n    permission_classes = [IsAuthenticated]\nclass RolesTbViewSet(viewsets.ModelViewSet):\n    queryset = RolesTb.objects.all()\n    serializer_class = RolesTbSerializer\n    permission_classes = [IsAuthenticated]\nclass SexTbViewSet(viewsets.ModelViewSet):\n    queryset = SexTb.objects.all()",
         "detail": "orphelinat_app.views",
         "documentation": {}
     },
@@ -811,7 +820,7 @@
         "kind": 6,
         "importPath": "orphelinat_app.views",
         "description": "orphelinat_app.views",
-        "peekOfCode": "class RolesTbViewSet(viewsets.ModelViewSet):\n    queryset = RolesTb.objects.all()\n    serializer_class = RolesTbSerializer\nclass SexTbViewSet(viewsets.ModelViewSet):\n    queryset = SexTb.objects.all()\n    serializer_class = SexTbSerializer\nclass ActionsTbViewSet(viewsets.ModelViewSet):\n    queryset = ActionsTb.objects.all()\n    serializer_class = ActionsTbSerializer\nclass MessagesTbViewSet(viewsets.ModelViewSet):",
+        "peekOfCode": "class RolesTbViewSet(viewsets.ModelViewSet):\n    queryset = RolesTb.objects.all()\n    serializer_class = RolesTbSerializer\n    permission_classes = [IsAuthenticated]\nclass SexTbViewSet(viewsets.ModelViewSet):\n    queryset = SexTb.objects.all()\n    serializer_class = SexTbSerializer\n    permission_classes = [IsAuthenticated]\nclass ActionsTbViewSet(viewsets.ModelViewSet):\n    queryset = ActionsTb.objects.all()",
         "detail": "orphelinat_app.views",
         "documentation": {}
     },
@@ -820,7 +829,7 @@
         "kind": 6,
         "importPath": "orphelinat_app.views",
         "description": "orphelinat_app.views",
-        "peekOfCode": "class SexTbViewSet(viewsets.ModelViewSet):\n    queryset = SexTb.objects.all()\n    serializer_class = SexTbSerializer\nclass ActionsTbViewSet(viewsets.ModelViewSet):\n    queryset = ActionsTb.objects.all()\n    serializer_class = ActionsTbSerializer\nclass MessagesTbViewSet(viewsets.ModelViewSet):\n    queryset = MessagesTb.objects.all()\n    serializer_class = MessagesTbSerializer\nclass OrphelinatsTbViewSet(viewsets.ModelViewSet):",
+        "peekOfCode": "class SexTbViewSet(viewsets.ModelViewSet):\n    queryset = SexTb.objects.all()\n    serializer_class = SexTbSerializer\n    permission_classes = [IsAuthenticated]\nclass ActionsTbViewSet(viewsets.ModelViewSet):\n    queryset = ActionsTb.objects.all()\n    serializer_class = ActionsTbSerializer\n    permission_classes = [IsAuthenticated]\nclass MessagesTbViewSet(viewsets.ModelViewSet):\n    queryset = MessagesTb.objects.select_related('sender', 'receiver').all()",
         "detail": "orphelinat_app.views",
         "documentation": {}
     },
@@ -829,7 +838,7 @@
         "kind": 6,
         "importPath": "orphelinat_app.views",
         "description": "orphelinat_app.views",
-        "peekOfCode": "class ActionsTbViewSet(viewsets.ModelViewSet):\n    queryset = ActionsTb.objects.all()\n    serializer_class = ActionsTbSerializer\nclass MessagesTbViewSet(viewsets.ModelViewSet):\n    queryset = MessagesTb.objects.all()\n    serializer_class = MessagesTbSerializer\nclass OrphelinatsTbViewSet(viewsets.ModelViewSet):\n    queryset = OrphelinatsTb.objects.all()\n    serializer_class = OrphelinatsTbSerializer\n# 🔢 Statistiques globales (nombre total)",
+        "peekOfCode": "class ActionsTbViewSet(viewsets.ModelViewSet):\n    queryset = ActionsTb.objects.all()\n    serializer_class = ActionsTbSerializer\n    permission_classes = [IsAuthenticated]\nclass MessagesTbViewSet(viewsets.ModelViewSet):\n    queryset = MessagesTb.objects.select_related('sender', 'receiver').all()\n    serializer_class = MessagesTbSerializer\n    permission_classes = [IsAuthenticated]\nclass OrphelinatsTbViewSet(viewsets.ModelViewSet):\n    queryset = OrphelinatsTb.objects.all()",
         "detail": "orphelinat_app.views",
         "documentation": {}
     },
@@ -838,7 +847,7 @@
         "kind": 6,
         "importPath": "orphelinat_app.views",
         "description": "orphelinat_app.views",
-        "peekOfCode": "class MessagesTbViewSet(viewsets.ModelViewSet):\n    queryset = MessagesTb.objects.all()\n    serializer_class = MessagesTbSerializer\nclass OrphelinatsTbViewSet(viewsets.ModelViewSet):\n    queryset = OrphelinatsTb.objects.all()\n    serializer_class = OrphelinatsTbSerializer\n# 🔢 Statistiques globales (nombre total)\n@api_view(['GET'])\ndef stats_view(request):\n    return Response({",
+        "peekOfCode": "class MessagesTbViewSet(viewsets.ModelViewSet):\n    queryset = MessagesTb.objects.select_related('sender', 'receiver').all()\n    serializer_class = MessagesTbSerializer\n    permission_classes = [IsAuthenticated]\nclass OrphelinatsTbViewSet(viewsets.ModelViewSet):\n    queryset = OrphelinatsTb.objects.all()\n    serializer_class = OrphelinatsTbSerializer\n    permission_classes = [IsAuthenticated]\n# ✅ Vue statistique\n@api_view(['GET'])",
         "detail": "orphelinat_app.views",
         "documentation": {}
     },
@@ -847,7 +856,7 @@
         "kind": 6,
         "importPath": "orphelinat_app.views",
         "description": "orphelinat_app.views",
-        "peekOfCode": "class OrphelinatsTbViewSet(viewsets.ModelViewSet):\n    queryset = OrphelinatsTb.objects.all()\n    serializer_class = OrphelinatsTbSerializer\n# 🔢 Statistiques globales (nombre total)\n@api_view(['GET'])\ndef stats_view(request):\n    return Response({\n        'total_orphelins': OrphelinsTb.objects.count(),\n        'total_adoptions': AdoptionsTb.objects.count(),\n    })",
+        "peekOfCode": "class OrphelinatsTbViewSet(viewsets.ModelViewSet):\n    queryset = OrphelinatsTb.objects.all()\n    serializer_class = OrphelinatsTbSerializer\n    permission_classes = [IsAuthenticated]\n# ✅ Vue statistique\n@api_view(['GET'])\ndef stats_view(request):\n    data = {\n        \"total_utilisateurs\": UsersTb.objects.count(),\n        \"total_orphelins\": OrphelinsTb.objects.count(),",
         "detail": "orphelinat_app.views",
         "documentation": {}
     },
@@ -856,7 +865,7 @@
         "kind": 2,
         "importPath": "orphelinat_app.views",
         "description": "orphelinat_app.views",
-        "peekOfCode": "def stats_view(request):\n    return Response({\n        'total_orphelins': OrphelinsTb.objects.count(),\n        'total_adoptions': AdoptionsTb.objects.count(),\n    })",
+        "peekOfCode": "def stats_view(request):\n    data = {\n        \"total_utilisateurs\": UsersTb.objects.count(),\n        \"total_orphelins\": OrphelinsTb.objects.count(),\n        \"total_adoptions\": AdoptionsTb.objects.count(),\n        \"total_adoptants\": AdoptantsTb.objects.count(),\n        \"total_documents\": DocumentsTb.objects.count(),\n        \"total_donateurs\": DonatorsTb.objects.count(),\n        \"total_dons\": GiftsTb.objects.count(),\n        \"total_visites_médicales\": MedicalVisitsTb.objects.count(),",
         "detail": "orphelinat_app.views",
         "documentation": {}
     },
@@ -964,7 +973,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "WSGI_APPLICATION = 'orphelinat_project.wsgi.application'\n# Database\n# https://docs.djangoproject.com/en/5.2/ref/settings/#databases\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.postgresql',\n        'NAME': 'postgres',\n        'USER': 'postgres',\n        'PASSWORD': 'Gedeon@1234',  # <--- colle ici le mot de passe depuis Supabase\n        'HOST': 'db.qrzetjrzctzxopxenhet.supabase.co',",
+        "peekOfCode": "WSGI_APPLICATION = 'orphelinat_project.wsgi.application'\n# Database\n# https://docs.djangoproject.com/en/5.2/ref/settings/#databases\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.postgresql',\n        'NAME': 'postgres',\n        'USER': 'postgres.qrzetjrzctzxopxenhet',\n        'PASSWORD': 'Gedeon@1234',\n        'HOST': 'aws-0-eu-north-1.pooler.supabase.com',",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -973,7 +982,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "DATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.postgresql',\n        'NAME': 'postgres',\n        'USER': 'postgres',\n        'PASSWORD': 'Gedeon@1234',  # <--- colle ici le mot de passe depuis Supabase\n        'HOST': 'db.qrzetjrzctzxopxenhet.supabase.co',\n        'PORT': '5432',\n    }\n}",
+        "peekOfCode": "DATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.postgresql',\n        'NAME': 'postgres',\n        'USER': 'postgres.qrzetjrzctzxopxenhet',\n        'PASSWORD': 'Gedeon@1234',\n        'HOST': 'aws-0-eu-north-1.pooler.supabase.com',\n        'PORT': '6543',\n    }\n}",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -991,7 +1000,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "LANGUAGE_CODE = 'en-us'\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\nCORS_ALLOW_ALL_ORIGINS = True \n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field",
+        "peekOfCode": "LANGUAGE_CODE = 'en-us'\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\nCORS_ALLOW_ALL_ORIGINS = True \n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Default primary key field type",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1000,7 +1009,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\nCORS_ALLOW_ALL_ORIGINS = True \n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\nCORS_ALLOW_ALL_ORIGINS = True \n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1009,7 +1018,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\nCORS_ALLOW_ALL_ORIGINS = True \n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {",
+        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\nCORS_ALLOW_ALL_ORIGINS = True \n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1018,7 +1027,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "USE_TZ = True\nCORS_ALLOW_ALL_ORIGINS = True \n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [",
+        "peekOfCode": "USE_TZ = True\nCORS_ALLOW_ALL_ORIGINS = True \n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1027,7 +1036,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "CORS_ALLOW_ALL_ORIGINS = True \n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [\n        'rest_framework_simplejwt.authentication.JWTAuthentication',",
+        "peekOfCode": "CORS_ALLOW_ALL_ORIGINS = True \n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1036,7 +1045,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "STATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [\n        'rest_framework_simplejwt.authentication.JWTAuthentication',\n    ],\n    'DEFAULT_PERMISSION_CLASSES': [\n        'rest_framework.permissions.AllowAny',  ",
+        "peekOfCode": "STATIC_URL = 'static/'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [\n        'rest_framework_simplejwt.authentication.JWTAuthentication',\n    ],\n    'DEFAULT_PERMISSION_CLASSES': [",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1045,7 +1054,16 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [\n        'rest_framework_simplejwt.authentication.JWTAuthentication',\n    ],\n    'DEFAULT_PERMISSION_CLASSES': [\n        'rest_framework.permissions.AllowAny',  \n    ],\n    'DEFAULT_FILTER_BACKENDS': [\n        'django_filters.rest_framework.DjangoFilterBackend',",
+        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [\n        'rest_framework_simplejwt.authentication.JWTAuthentication',\n    ],\n    'DEFAULT_PERMISSION_CLASSES': [\n        'rest_framework.permissions.IsAuthenticated',  # ✅ sécurisé par défaut",
+        "detail": "orphelinat_project.settings",
+        "documentation": {}
+    },
+    {
+        "label": "DEFAULT_AUTO_FIELD",
+        "kind": 5,
+        "importPath": "orphelinat_project.settings",
+        "description": "orphelinat_project.settings",
+        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [\n        'rest_framework_simplejwt.authentication.JWTAuthentication',\n    ],\n    'DEFAULT_PERMISSION_CLASSES': [\n        'rest_framework.permissions.IsAuthenticated',  # ✅ sécurisé par défaut\n    ],\n    'DEFAULT_FILTER_BACKENDS': [\n        'django_filters.rest_framework.DjangoFilterBackend',",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1054,8 +1072,35 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "REST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [\n        'rest_framework_simplejwt.authentication.JWTAuthentication',\n    ],\n    'DEFAULT_PERMISSION_CLASSES': [\n        'rest_framework.permissions.AllowAny',  \n    ],\n    'DEFAULT_FILTER_BACKENDS': [\n        'django_filters.rest_framework.DjangoFilterBackend',\n    ],",
+        "peekOfCode": "REST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [\n        'rest_framework_simplejwt.authentication.JWTAuthentication',\n    ],\n    'DEFAULT_PERMISSION_CLASSES': [\n        'rest_framework.permissions.IsAuthenticated',  # ✅ sécurisé par défaut\n    ],\n    'DEFAULT_FILTER_BACKENDS': [\n        'django_filters.rest_framework.DjangoFilterBackend',\n    ],",
         "detail": "orphelinat_project.settings",
+        "documentation": {}
+    },
+    {
+        "label": "SIMPLE_JWT",
+        "kind": 5,
+        "importPath": "orphelinat_project.settings",
+        "description": "orphelinat_project.settings",
+        "peekOfCode": "SIMPLE_JWT = {\n    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),\n    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),\n    'AUTH_HEADER_TYPES': ('Bearer',),\n}\n#AUTH_USER_MODEL = 'orphelinat_app.UsersTb'",
+        "detail": "orphelinat_project.settings",
+        "documentation": {}
+    },
+    {
+        "label": "#AUTH_USER_MODEL",
+        "kind": 5,
+        "importPath": "orphelinat_project.settings",
+        "description": "orphelinat_project.settings",
+        "peekOfCode": "#AUTH_USER_MODEL = 'orphelinat_app.UsersTb'",
+        "detail": "orphelinat_project.settings",
+        "documentation": {}
+    },
+    {
+        "label": "api_urlpatterns",
+        "kind": 5,
+        "importPath": "orphelinat_project.urls",
+        "description": "orphelinat_project.urls",
+        "peekOfCode": "api_urlpatterns = [\n    path('api/', include('orphelinat_app.urls')),\n    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),\n]\nurlpatterns = [\n    path('admin/', admin.site.urls),\n    # Routes API directement incluses sans format_suffix_patterns\n    *api_urlpatterns,\n  re_path(r'^swagger(?P<file_format>\\.json|\\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),\n    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),",
+        "detail": "orphelinat_project.urls",
         "documentation": {}
     },
     {
@@ -1063,7 +1108,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.urls",
         "description": "orphelinat_project.urls",
-        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('api/', include('orphelinat_app.urls')),\n    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh')\n]",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    # Routes API directement incluses sans format_suffix_patterns\n    *api_urlpatterns,\n  re_path(r'^swagger(?P<file_format>\\.json|\\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),\n    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),\n]",
         "detail": "orphelinat_project.urls",
         "documentation": {}
     },
