@@ -4,6 +4,12 @@ from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
+from django.http import JsonResponse
+
+def test_view(request):
+    return JsonResponse({"message": "Test OK"})
+
+
 from .views import (
     UsersTbViewSet, OrphelinsTbViewSet, AdoptionsTbViewSet, AdoptantsTbViewSet,
     DocumentsTbViewSet, DonatorsTbViewSet, GiftsTbViewSet, MedicalVisitsTbViewSet,
@@ -41,6 +47,7 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
+    path('test/', test_view),
     path('', include(router.urls)),
     path('stats/', stats_view, name='stats'),
     path('login/', LoginUserView.as_view(), name='login'),
