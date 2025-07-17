@@ -1383,7 +1383,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "STATIC_URL = 'static/'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nSTATIC_ROOT = BASE_DIR / 'staticfiles'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [],  # ✅ Pas d'authentification → pas de JWT, pas de session\n    'DEFAULT_PERMISSION_CLASSES': [\n        'rest_framework.permissions.AllowAny',  # ✅ Toutes les vues sont publiques par défaut",
+        "peekOfCode": "STATIC_URL = 'static/'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nSTATIC_ROOT = BASE_DIR / 'staticfiles'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [\n        'rest_framework_simplejwt.authentication.JWTAuthentication',  # ✅ pour que Swagger puisse tester les routes JWT\n    ],",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1392,7 +1392,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nSTATIC_ROOT = BASE_DIR / 'staticfiles'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [],  # ✅ Pas d'authentification → pas de JWT, pas de session\n    'DEFAULT_PERMISSION_CLASSES': [\n        'rest_framework.permissions.AllowAny',  # ✅ Toutes les vues sont publiques par défaut\n    ],",
+        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nSTATIC_ROOT = BASE_DIR / 'staticfiles'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [\n        'rest_framework_simplejwt.authentication.JWTAuthentication',  # ✅ pour que Swagger puisse tester les routes JWT\n    ],\n    'DEFAULT_PERMISSION_CLASSES': [",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1401,7 +1401,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "STATIC_ROOT = BASE_DIR / 'staticfiles'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [],  # ✅ Pas d'authentification → pas de JWT, pas de session\n    'DEFAULT_PERMISSION_CLASSES': [\n        'rest_framework.permissions.AllowAny',  # ✅ Toutes les vues sont publiques par défaut\n    ],\n    'DEFAULT_FILTER_BACKENDS': [",
+        "peekOfCode": "STATIC_ROOT = BASE_DIR / 'staticfiles'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [\n        'rest_framework_simplejwt.authentication.JWTAuthentication',  # ✅ pour que Swagger puisse tester les routes JWT\n    ],\n    'DEFAULT_PERMISSION_CLASSES': [\n        'rest_framework.permissions.AllowAny',  # ✅ Swagger et toutes les routes sont publiques",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1410,7 +1410,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [],  # ✅ Pas d'authentification → pas de JWT, pas de session\n    'DEFAULT_PERMISSION_CLASSES': [\n        'rest_framework.permissions.AllowAny',  # ✅ Toutes les vues sont publiques par défaut\n    ],\n    'DEFAULT_FILTER_BACKENDS': [\n        'django_filters.rest_framework.DjangoFilterBackend',\n    ],\n}",
+        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [\n        'rest_framework_simplejwt.authentication.JWTAuthentication',  # ✅ pour que Swagger puisse tester les routes JWT\n    ],\n    'DEFAULT_PERMISSION_CLASSES': [\n        'rest_framework.permissions.AllowAny',  # ✅ Swagger et toutes les routes sont publiques\n    ],\n    'DEFAULT_FILTER_BACKENDS': [\n        'django_filters.rest_framework.DjangoFilterBackend',",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1419,7 +1419,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "REST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [],  # ✅ Pas d'authentification → pas de JWT, pas de session\n    'DEFAULT_PERMISSION_CLASSES': [\n        'rest_framework.permissions.AllowAny',  # ✅ Toutes les vues sont publiques par défaut\n    ],\n    'DEFAULT_FILTER_BACKENDS': [\n        'django_filters.rest_framework.DjangoFilterBackend',\n    ],\n}\n# JWT Configuration",
+        "peekOfCode": "REST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [\n        'rest_framework_simplejwt.authentication.JWTAuthentication',  # ✅ pour que Swagger puisse tester les routes JWT\n    ],\n    'DEFAULT_PERMISSION_CLASSES': [\n        'rest_framework.permissions.AllowAny',  # ✅ Swagger et toutes les routes sont publiques\n    ],\n    'DEFAULT_FILTER_BACKENDS': [\n        'django_filters.rest_framework.DjangoFilterBackend',\n    ],",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1428,7 +1428,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "SIMPLE_JWT = {\n    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),\n    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),\n    'AUTH_HEADER_TYPES': ('Bearer',),\n}\n#AUTH_USER_MODEL = 'orphelinat_app.UsersTb'\nSTATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'",
+        "peekOfCode": "SIMPLE_JWT = {\n    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),\n    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),\n    'AUTH_HEADER_TYPES': ('Bearer',),\n}\n#AUTH_USER_MODEL = 'orphelinat_app.UsersTb'\nSWAGGER_SETTINGS = {\n    'USE_SESSION_AUTH': False,\n    'LOGIN_URL': 'login',\n    'LOGOUT_URL': 'logout',",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1437,7 +1437,16 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "#AUTH_USER_MODEL = 'orphelinat_app.UsersTb'\nSTATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'",
+        "peekOfCode": "#AUTH_USER_MODEL = 'orphelinat_app.UsersTb'\nSWAGGER_SETTINGS = {\n    'USE_SESSION_AUTH': False,\n    'LOGIN_URL': 'login',\n    'LOGOUT_URL': 'logout',\n}\nSTATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'",
+        "detail": "orphelinat_project.settings",
+        "documentation": {}
+    },
+    {
+        "label": "SWAGGER_SETTINGS",
+        "kind": 5,
+        "importPath": "orphelinat_project.settings",
+        "description": "orphelinat_project.settings",
+        "peekOfCode": "SWAGGER_SETTINGS = {\n    'USE_SESSION_AUTH': False,\n    'LOGIN_URL': 'login',\n    'LOGOUT_URL': 'logout',\n}\nSTATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
