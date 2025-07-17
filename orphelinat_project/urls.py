@@ -30,26 +30,24 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+"""
+URL configuration for orphelinat_project project.
+
+The `urlpatterns` list routes URLs to views. For more information, see:
+    https://docs.djangoproject.com/en/5.2/topics/http/urls/
+"""
 
 from django.contrib import admin
-from django.urls import path, include, re_path
+from django.urls import path, include
 from rest_framework_simplejwt.views import TokenRefreshView
-from orphelinat_app.swagger import schema_view  # Assure-toi que ce fichier existe et exporte schema_view
-
-# Routes API (pas de format_suffix_patterns ici !)
-api_urlpatterns = [
-    path('api/', include('orphelinat_app.urls')),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-]
 
 urlpatterns = [
+    # Interface d'administration Django
     path('admin/', admin.site.urls),
 
-    # Routes API incluses sous /api/
-    *api_urlpatterns,
+    # Inclusion des routes API définies dans l'application orphelinat_app
+    path('api/', include('orphelinat_app.urls')),
 
-    # Swagger & Redoc accessibles à la racine
-    re_path(r'^swagger(?P<file_format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
-    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+    # Endpoint pour rafraîchir un token JWT expiré
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]

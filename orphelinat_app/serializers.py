@@ -1,5 +1,9 @@
 from rest_framework import serializers
-from .models import *
+from .models import (
+    UsersTb, OrphelinsTb, AdoptionsTb, AdoptantsTb, DocumentsTb,
+    DonatorsTb, GiftsTb, MedicalVisitsTb, EducationTb, CountryTb,
+    StatusTb, RolesTb, SexTb, ActionsTb, MessagesTb, OrphelinatsTb
+)
 
 class UsersTbSerializer(serializers.ModelSerializer):
     class Meta:

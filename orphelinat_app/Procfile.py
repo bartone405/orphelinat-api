@@ -1,0 +1,1 @@
+web: gunicorn orphelinat_project.wsgi --log-file -

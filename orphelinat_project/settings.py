@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os 
 from datetime import timedelta
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,10 +29,10 @@ SECRET_KEY = SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-secret')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'False').lower() in ('true', '1', 't')  # Configure via variable d'env
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'orphelinat-app.onrender.com').split(',')
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'orphelinat-api.onrender.com').split(',')
 
 
 
@@ -64,7 +65,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
+    'whitenoise.middleware.WhiteNoiseMiddleware', 
 ]
 
 ROOT_URLCONF = 'orphelinat_project.urls'
@@ -91,15 +92,30 @@ WSGI_APPLICATION = 'orphelinat_project.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres.qrzetjrzctzxopxenhet',
-        'PASSWORD': 'Gedeon@1234',
-        'HOST': 'aws-0-eu-north-1.pooler.supabase.com',
-        'PORT': '6543',
-    }
+    'default': dj_database_url.config(
+        default='postgresql://postgres:Gedeon@1234@aws-0-eu-north-1.pooler.supabase.com:6543/postgres',
+        conn_max_age=600,
+        ssl_require=True
+    )
 }
+
+
+
+
+
+
+
+
+#DATABASES = {
+   # 'default': {
+       # 'ENGINE': 'django.db.backends.postgresql',
+        #'NAME': 'postgres',
+        #'USER': 'postgres.qrzetjrzctzxopxenhet',
+       # 'PASSWORD': 'Gedeon@1234',
+       # 'HOST': 'aws-0-eu-north-1.pooler.supabase.com',
+        #'PORT': '6543',
+   # }
+#}
 
 
 
@@ -134,7 +150,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-CORS_ALLOW_ALL_ORIGINS = True 
+CORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', '').split(',')
 
 
 # Static files (CSS, JavaScript, Images)
@@ -142,6 +158,8 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -150,14 +168,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [],  # Aucune authentification requise
+    'DEFAULT_AUTHENTICATION_CLASSES': [],  # ✅ Pas d'authentification → pas de JWT, pas de session
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',  # Tout le monde a accès
+        'rest_framework.permissions.AllowAny',  # ✅ Toutes les vues sont publiques par défaut
     ],
     'DEFAULT_FILTER_BACKENDS': [
         'django_filters.rest_framework.DjangoFilterBackend',
     ],
 }
+
 
 
 
@@ -170,15 +189,8 @@ SIMPLE_JWT = {
 
 #AUTH_USER_MODEL = 'orphelinat_app.UsersTb'
 
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-SECURE_HSTS_SECONDS = 31536000  # 1 an
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
-
-SECURE_CONTENT_TYPE_NOSNIFF = True
-SECURE_BROWSER_XSS_FILTER = True
 
 
 

@@ -3,7 +3,7 @@ services:
     name: orphelinat-api
     env: python
     buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn orphelinat_project.wsgi:application"
+    startCommand: "gunicorn orphelinat_project.wsgi:application --log-file -"
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: orphelinat_project.settings
@@ -11,3 +11,7 @@ services:
         value: "django-insecure-q+vg47fmez-pw#hezlyxenqhq-qj$89$e&@g#(60j6de%5hpo0"
       - key: DATABASE_URL
         value: postgres://postgres:Gedeon%401234@db.qrzetjrzctzxopxenhet.supabase.co:5432/postgres
+      - key: DEBUG
+        value: 'False'
+    staticPublishPath: staticfiles
+
