@@ -23,6 +23,7 @@ schema_view = get_schema_view(
     ),
     public=True,
     permission_classes=(permissions.AllowAny,),
+    url="https://orphelinat-api.onrender.com/api"  # ← Mets ici l’URL publique de ton backend Render
 )
 
 router = DefaultRouter()
@@ -49,6 +50,7 @@ urlpatterns = [
     path('register/', RegisterUserView.as_view(), name='user-register'),
     path('login/', LoginUserView.as_view(), name='user-login'),
 
+    # Swagger & Redoc
     re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
