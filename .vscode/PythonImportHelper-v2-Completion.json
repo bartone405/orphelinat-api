@@ -248,14 +248,6 @@
         "documentation": {}
     },
     {
-        "label": "re_path",
-        "importPath": "django.urls",
-        "description": "django.urls",
-        "isExtraImport": true,
-        "detail": "django.urls",
-        "documentation": {}
-    },
-    {
         "label": "DefaultRouter",
         "importPath": "rest_framework.routers",
         "description": "rest_framework.routers",
@@ -343,14 +335,6 @@
         "description": "rest_framework_simplejwt.views",
         "isExtraImport": true,
         "detail": "rest_framework_simplejwt.views",
-        "documentation": {}
-    },
-    {
-        "label": "schema_view",
-        "importPath": "orphelinat_app.swagger",
-        "description": "orphelinat_app.swagger",
-        "isExtraImport": true,
-        "detail": "orphelinat_app.swagger",
         "documentation": {}
     },
     {
@@ -1186,7 +1170,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.urls",
         "description": "orphelinat_project.urls",
-        "peekOfCode": "api_urlpatterns = [\n    path('api/', include('orphelinat_app.urls')),\n    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),\n]\nurlpatterns = [\n    path('admin/', admin.site.urls),\n    # Routes API directement incluses sans format_suffix_patterns\n    *api_urlpatterns,\n  re_path(r'^swagger(?P<file_format>\\.json|\\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),\n    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),",
+        "peekOfCode": "api_urlpatterns = [\n    path('api/', include('orphelinat_app.urls')),\n    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),\n]\nurlpatterns = [\n    path('admin/', admin.site.urls),\n    # Routes API directement incluses sans format_suffix_patterns\n    *api_urlpatterns,\n]",
         "detail": "orphelinat_project.urls",
         "documentation": {}
     },
@@ -1195,7 +1179,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.urls",
         "description": "orphelinat_project.urls",
-        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    # Routes API directement incluses sans format_suffix_patterns\n    *api_urlpatterns,\n  re_path(r'^swagger(?P<file_format>\\.json|\\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),\n    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),\n]",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    # Routes API directement incluses sans format_suffix_patterns\n    *api_urlpatterns,\n]",
         "detail": "orphelinat_project.urls",
         "documentation": {}
     },
