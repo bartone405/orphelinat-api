@@ -1464,7 +1464,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.urls",
         "description": "orphelinat_project.urls",
-        "peekOfCode": "urlpatterns = [\n    # Interface d'administration Django\n    path('admin/', admin.site.urls),\n    # Inclusion des routes API définies dans l'application orphelinat_app\n    path('api/', include('orphelinat_app.urls')),\n    # Endpoint pour rafraîchir un token JWT expiré\n    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),\n]",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('api/', include('orphelinat_app.urls')),  # Swagger est dans orphelinat_app.urls\n    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),\n]",
         "detail": "orphelinat_project.urls",
         "documentation": {}
     },
