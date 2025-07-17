@@ -128,6 +128,14 @@
         "documentation": {}
     },
     {
+        "label": "permissions",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
         "label": "viewsets",
         "importPath": "rest_framework",
         "description": "rest_framework",
@@ -692,7 +700,7 @@
         "kind": 5,
         "importPath": "orphelinat_app.swagger",
         "description": "orphelinat_app.swagger",
-        "peekOfCode": "schema_view = get_schema_view(\n    openapi.Info(\n        title=\"Orphelinat API\",\n        default_version='v1',\n        description=\"Documentation publique de l'API REST de l'orphelinat\",\n    ),\n    public=True,\n    permission_classes=[],        \n    authentication_classes=[],   \n)",
+        "peekOfCode": "schema_view = get_schema_view(\n    openapi.Info(\n        title=\"Orphelinat API\",\n        default_version='v1',\n        description=\"Documentation publique de l'API REST de l'orphelinat\",\n    ),\n    public=True,\n    permission_classes=(permissions.AllowAny,),\n    url='/api'  # 👈 très important ici !\n)",
         "detail": "orphelinat_app.swagger",
         "documentation": {}
     },
@@ -701,7 +709,7 @@
         "kind": 5,
         "importPath": "orphelinat_app.urls",
         "description": "orphelinat_app.urls",
-        "peekOfCode": "schema_view = get_schema_view(\n    openapi.Info(\n        title=\"Orphelinat API\",\n        default_version='v1',\n        description=\"Documentation publique de l'API REST de l'orphelinat\",\n    ),\n    public=True,\n    permission_classes=(permissions.AllowAny,),\n)\nrouter = DefaultRouter()",
+        "peekOfCode": "schema_view = get_schema_view(\n    openapi.Info(\n        title=\"Orphelinat API\",\n        default_version='v1',\n        description=\"Documentation publique de l'API REST de l'orphelinat\",\n    ),\n    public=True,\n    permission_classes=(permissions.AllowAny,),\n    url=\"https://orphelinat-api.onrender.com/api\"  # ← Mets ici l’URL publique de ton backend Render\n)",
         "detail": "orphelinat_app.urls",
         "documentation": {}
     },
@@ -719,7 +727,7 @@
         "kind": 5,
         "importPath": "orphelinat_app.urls",
         "description": "orphelinat_app.urls",
-        "peekOfCode": "urlpatterns = [\n    path('', include(router.urls)),\n    path('stats/', stats_view, name='stats'),\n    path('register/', RegisterUserView.as_view(), name='user-register'),\n    path('login/', LoginUserView.as_view(), name='user-login'),\n    re_path(r'^swagger(?P<format>\\.json|\\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),\n    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),\n    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),\n]",
+        "peekOfCode": "urlpatterns = [\n    path('', include(router.urls)),\n    path('stats/', stats_view, name='stats'),\n    path('register/', RegisterUserView.as_view(), name='user-register'),\n    path('login/', LoginUserView.as_view(), name='user-login'),\n    # Swagger & Redoc\n    re_path(r'^swagger(?P<format>\\.json|\\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),\n    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),\n    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),\n]",
         "detail": "orphelinat_app.urls",
         "documentation": {}
     },
@@ -908,7 +916,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\n#SECRET_KEY = 'django-insecure-q+vg47fmez-pw#hezlyxenqhq-qj$89$e&@g#(60j6de%5hpo0' je note ca ici\nSECRET_KEY = SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-secret')\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = ['*']\n# Application definition",
+        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\n#SECRET_KEY = 'django-insecure-q+vg47fmez-pw#hezlyxenqhq-qj$89$e&@g#(60j6de%5hpo0' je note ca ici\nSECRET_KEY = SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-secret')\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = os.environ.get('DEBUG', 'False').lower() in ('true', '1', 't')  # Configure via variable d'env\nALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'orphelinat-api.onrender.com').split(',')",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -917,7 +925,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "#SECRET_KEY = 'django-insecure-q+vg47fmez-pw#hezlyxenqhq-qj$89$e&@g#(60j6de%5hpo0' je note ca ici\nSECRET_KEY = SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-secret')\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = ['*']\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',",
+        "peekOfCode": "#SECRET_KEY = 'django-insecure-q+vg47fmez-pw#hezlyxenqhq-qj$89$e&@g#(60j6de%5hpo0' je note ca ici\nSECRET_KEY = SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-secret')\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = os.environ.get('DEBUG', 'False').lower() in ('true', '1', 't')  # Configure via variable d'env\nALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'orphelinat-api.onrender.com').split(',')\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -926,7 +934,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "SECRET_KEY = SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-secret')\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = ['*']\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',",
+        "peekOfCode": "SECRET_KEY = SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-secret')\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = os.environ.get('DEBUG', 'False').lower() in ('true', '1', 't')  # Configure via variable d'env\nALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'orphelinat-api.onrender.com').split(',')\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -935,7 +943,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "DEBUG = True\nALLOWED_HOSTS = ['*']\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',",
+        "peekOfCode": "DEBUG = os.environ.get('DEBUG', 'False').lower() in ('true', '1', 't')  # Configure via variable d'env\nALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'orphelinat-api.onrender.com').split(',')\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -944,7 +952,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "ALLOWED_HOSTS = ['*']\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'orphelinat_app',              # ✅ Ton application Django",
+        "peekOfCode": "ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'orphelinat-api.onrender.com').split(',')\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'orphelinat_app',              # ✅ Ton application Django",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1052,7 +1060,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "CORS_ALLOW_ALL_ORIGINS = True \n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [],  # Aucune authentification",
+        "peekOfCode": "CORS_ALLOW_ALL_ORIGINS = True \n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [],  # Aucune authentification requise",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1061,7 +1069,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "STATIC_URL = 'static/'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [],  # Aucune authentification\n    'DEFAULT_PERMISSION_CLASSES': [\n        'rest_framework.permissions.AllowAny',\n    ],",
+        "peekOfCode": "STATIC_URL = 'static/'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [],  # Aucune authentification requise\n    'DEFAULT_PERMISSION_CLASSES': [\n        'rest_framework.permissions.AllowAny',  # Tout le monde a accès\n    ],",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1070,7 +1078,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [],  # Aucune authentification\n    'DEFAULT_PERMISSION_CLASSES': [\n        'rest_framework.permissions.AllowAny',\n    ],\n    'DEFAULT_FILTER_BACKENDS': [",
+        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [],  # Aucune authentification requise\n    'DEFAULT_PERMISSION_CLASSES': [\n        'rest_framework.permissions.AllowAny',  # Tout le monde a accès\n    ],\n    'DEFAULT_FILTER_BACKENDS': [",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1079,7 +1087,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [],  # Aucune authentification\n    'DEFAULT_PERMISSION_CLASSES': [\n        'rest_framework.permissions.AllowAny',\n    ],\n    'DEFAULT_FILTER_BACKENDS': [\n        'django_filters.rest_framework.DjangoFilterBackend',\n    ],\n}",
+        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [],  # Aucune authentification requise\n    'DEFAULT_PERMISSION_CLASSES': [\n        'rest_framework.permissions.AllowAny',  # Tout le monde a accès\n    ],\n    'DEFAULT_FILTER_BACKENDS': [\n        'django_filters.rest_framework.DjangoFilterBackend',\n    ],\n}",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1088,7 +1096,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "REST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [],  # Aucune authentification\n    'DEFAULT_PERMISSION_CLASSES': [\n        'rest_framework.permissions.AllowAny',\n    ],\n    'DEFAULT_FILTER_BACKENDS': [\n        'django_filters.rest_framework.DjangoFilterBackend',\n    ],\n}\n# JWT Configuration",
+        "peekOfCode": "REST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [],  # Aucune authentification requise\n    'DEFAULT_PERMISSION_CLASSES': [\n        'rest_framework.permissions.AllowAny',  # Tout le monde a accès\n    ],\n    'DEFAULT_FILTER_BACKENDS': [\n        'django_filters.rest_framework.DjangoFilterBackend',\n    ],\n}\n# JWT Configuration",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1097,7 +1105,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "SIMPLE_JWT = {\n    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),\n    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),\n    'AUTH_HEADER_TYPES': ('Bearer',),\n}\n#AUTH_USER_MODEL = 'orphelinat_app.UsersTb'",
+        "peekOfCode": "SIMPLE_JWT = {\n    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),\n    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),\n    'AUTH_HEADER_TYPES': ('Bearer',),\n}\n#AUTH_USER_MODEL = 'orphelinat_app.UsersTb'\nCSRF_COOKIE_SECURE = True\nSESSION_COOKIE_SECURE = True\nSECURE_HSTS_SECONDS = 31536000  # 1 an\nSECURE_HSTS_INCLUDE_SUBDOMAINS = True",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1106,7 +1114,70 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "#AUTH_USER_MODEL = 'orphelinat_app.UsersTb'",
+        "peekOfCode": "#AUTH_USER_MODEL = 'orphelinat_app.UsersTb'\nCSRF_COOKIE_SECURE = True\nSESSION_COOKIE_SECURE = True\nSECURE_HSTS_SECONDS = 31536000  # 1 an\nSECURE_HSTS_INCLUDE_SUBDOMAINS = True\nSECURE_HSTS_PRELOAD = True\nSECURE_CONTENT_TYPE_NOSNIFF = True\nSECURE_BROWSER_XSS_FILTER = True",
+        "detail": "orphelinat_project.settings",
+        "documentation": {}
+    },
+    {
+        "label": "CSRF_COOKIE_SECURE",
+        "kind": 5,
+        "importPath": "orphelinat_project.settings",
+        "description": "orphelinat_project.settings",
+        "peekOfCode": "CSRF_COOKIE_SECURE = True\nSESSION_COOKIE_SECURE = True\nSECURE_HSTS_SECONDS = 31536000  # 1 an\nSECURE_HSTS_INCLUDE_SUBDOMAINS = True\nSECURE_HSTS_PRELOAD = True\nSECURE_CONTENT_TYPE_NOSNIFF = True\nSECURE_BROWSER_XSS_FILTER = True",
+        "detail": "orphelinat_project.settings",
+        "documentation": {}
+    },
+    {
+        "label": "SESSION_COOKIE_SECURE",
+        "kind": 5,
+        "importPath": "orphelinat_project.settings",
+        "description": "orphelinat_project.settings",
+        "peekOfCode": "SESSION_COOKIE_SECURE = True\nSECURE_HSTS_SECONDS = 31536000  # 1 an\nSECURE_HSTS_INCLUDE_SUBDOMAINS = True\nSECURE_HSTS_PRELOAD = True\nSECURE_CONTENT_TYPE_NOSNIFF = True\nSECURE_BROWSER_XSS_FILTER = True",
+        "detail": "orphelinat_project.settings",
+        "documentation": {}
+    },
+    {
+        "label": "SECURE_HSTS_SECONDS",
+        "kind": 5,
+        "importPath": "orphelinat_project.settings",
+        "description": "orphelinat_project.settings",
+        "peekOfCode": "SECURE_HSTS_SECONDS = 31536000  # 1 an\nSECURE_HSTS_INCLUDE_SUBDOMAINS = True\nSECURE_HSTS_PRELOAD = True\nSECURE_CONTENT_TYPE_NOSNIFF = True\nSECURE_BROWSER_XSS_FILTER = True",
+        "detail": "orphelinat_project.settings",
+        "documentation": {}
+    },
+    {
+        "label": "SECURE_HSTS_INCLUDE_SUBDOMAINS",
+        "kind": 5,
+        "importPath": "orphelinat_project.settings",
+        "description": "orphelinat_project.settings",
+        "peekOfCode": "SECURE_HSTS_INCLUDE_SUBDOMAINS = True\nSECURE_HSTS_PRELOAD = True\nSECURE_CONTENT_TYPE_NOSNIFF = True\nSECURE_BROWSER_XSS_FILTER = True",
+        "detail": "orphelinat_project.settings",
+        "documentation": {}
+    },
+    {
+        "label": "SECURE_HSTS_PRELOAD",
+        "kind": 5,
+        "importPath": "orphelinat_project.settings",
+        "description": "orphelinat_project.settings",
+        "peekOfCode": "SECURE_HSTS_PRELOAD = True\nSECURE_CONTENT_TYPE_NOSNIFF = True\nSECURE_BROWSER_XSS_FILTER = True",
+        "detail": "orphelinat_project.settings",
+        "documentation": {}
+    },
+    {
+        "label": "SECURE_CONTENT_TYPE_NOSNIFF",
+        "kind": 5,
+        "importPath": "orphelinat_project.settings",
+        "description": "orphelinat_project.settings",
+        "peekOfCode": "SECURE_CONTENT_TYPE_NOSNIFF = True\nSECURE_BROWSER_XSS_FILTER = True",
+        "detail": "orphelinat_project.settings",
+        "documentation": {}
+    },
+    {
+        "label": "SECURE_BROWSER_XSS_FILTER",
+        "kind": 5,
+        "importPath": "orphelinat_project.settings",
+        "description": "orphelinat_project.settings",
+        "peekOfCode": "SECURE_BROWSER_XSS_FILTER = True",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },

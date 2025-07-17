@@ -28,9 +28,11 @@ SECRET_KEY = SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-secret')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'False').lower() in ('true', '1', 't')  # Configure via variable d'env
 
-ALLOWED_HOSTS = ['*']
+
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'orphelinat-api.onrender.com').split(',')
+
 
 
 
@@ -148,14 +150,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [],  # Aucune authentification
+    'DEFAULT_AUTHENTICATION_CLASSES': [],  # Aucune authentification requise
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
+        'rest_framework.permissions.AllowAny',  # Tout le monde a accès
     ],
     'DEFAULT_FILTER_BACKENDS': [
         'django_filters.rest_framework.DjangoFilterBackend',
     ],
 }
+
 
 
 # JWT Configuration
@@ -166,6 +169,19 @@ SIMPLE_JWT = {
 }
 
 #AUTH_USER_MODEL = 'orphelinat_app.UsersTb'
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+
+SECURE_HSTS_SECONDS = 31536000  # 1 an
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+
+
+
 
 
 
