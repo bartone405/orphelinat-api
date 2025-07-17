@@ -91,13 +91,17 @@ WSGI_APPLICATION = 'orphelinat_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+
+
+
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgresql://postgres:Gedeon@1234@aws-0-eu-north-1.pooler.supabase.com:6543/postgres',
+        default='postgresql://postgres.qrzetjrzctzxopxenhet:Gedeon%401234@aws-0-eu-north-1.pooler.supabase.com:6543/postgres',
         conn_max_age=600,
-        ssl_require=True
+        ssl_require=True,
     )
 }
+
 
 
 
@@ -150,7 +154,11 @@ USE_I18N = True
 
 USE_TZ = True
 
-CORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', '').split(',')
+cors_origins = os.environ.get('CORS_ALLOWED_ORIGINS', '')
+if cors_origins:
+    CORS_ALLOWED_ORIGINS = [origin.strip() for origin in cors_origins.split(',') if origin.strip()]
+else:
+    CORS_ALLOWED_ORIGINS = []
 
 
 # Static files (CSS, JavaScript, Images)
