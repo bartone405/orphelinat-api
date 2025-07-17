@@ -1338,7 +1338,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "LANGUAGE_CODE = 'en-us'\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\nCORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', '').split(',')\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nSTATIC_ROOT = BASE_DIR / 'staticfiles'",
+        "peekOfCode": "LANGUAGE_CODE = 'en-us'\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\nCORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', '').split(',')\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'https://orphelinat-static.onrender.com/'\nSTATIC_ROOT = BASE_DIR / 'staticfiles'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1347,7 +1347,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\nCORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', '').split(',')\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nSTATIC_ROOT = BASE_DIR / 'staticfiles'\n# Default primary key field type",
+        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\nCORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', '').split(',')\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'https://orphelinat-static.onrender.com/'\nSTATIC_ROOT = BASE_DIR / 'staticfiles'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Default primary key field type",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1356,7 +1356,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\nCORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', '').split(',')\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nSTATIC_ROOT = BASE_DIR / 'staticfiles'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field",
+        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\nCORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', '').split(',')\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'https://orphelinat-static.onrender.com/'\nSTATIC_ROOT = BASE_DIR / 'staticfiles'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1365,7 +1365,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "USE_TZ = True\nCORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', '').split(',')\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nSTATIC_ROOT = BASE_DIR / 'staticfiles'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "USE_TZ = True\nCORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', '').split(',')\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'https://orphelinat-static.onrender.com/'\nSTATIC_ROOT = BASE_DIR / 'staticfiles'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1374,7 +1374,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "CORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', '').split(',')\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nSTATIC_ROOT = BASE_DIR / 'staticfiles'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {",
+        "peekOfCode": "CORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', '').split(',')\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'https://orphelinat-static.onrender.com/'\nSTATIC_ROOT = BASE_DIR / 'staticfiles'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1383,16 +1383,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "STATIC_URL = 'static/'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nSTATIC_ROOT = BASE_DIR / 'staticfiles'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [\n        'rest_framework_simplejwt.authentication.JWTAuthentication',  # ✅ pour que Swagger puisse tester les routes JWT\n    ],",
-        "detail": "orphelinat_project.settings",
-        "documentation": {}
-    },
-    {
-        "label": "DEFAULT_AUTO_FIELD",
-        "kind": 5,
-        "importPath": "orphelinat_project.settings",
-        "description": "orphelinat_project.settings",
-        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nSTATIC_ROOT = BASE_DIR / 'staticfiles'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [\n        'rest_framework_simplejwt.authentication.JWTAuthentication',  # ✅ pour que Swagger puisse tester les routes JWT\n    ],\n    'DEFAULT_PERMISSION_CLASSES': [",
+        "peekOfCode": "STATIC_URL = 'https://orphelinat-static.onrender.com/'\nSTATIC_ROOT = BASE_DIR / 'staticfiles'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [\n        'rest_framework_simplejwt.authentication.JWTAuthentication',  # ✅ pour que Swagger puisse tester les routes JWT\n    ],",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1401,7 +1392,16 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "STATIC_ROOT = BASE_DIR / 'staticfiles'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [\n        'rest_framework_simplejwt.authentication.JWTAuthentication',  # ✅ pour que Swagger puisse tester les routes JWT\n    ],\n    'DEFAULT_PERMISSION_CLASSES': [\n        'rest_framework.permissions.AllowAny',  # ✅ Swagger et toutes les routes sont publiques",
+        "peekOfCode": "STATIC_ROOT = BASE_DIR / 'staticfiles'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [\n        'rest_framework_simplejwt.authentication.JWTAuthentication',  # ✅ pour que Swagger puisse tester les routes JWT\n    ],\n    'DEFAULT_PERMISSION_CLASSES': [",
+        "detail": "orphelinat_project.settings",
+        "documentation": {}
+    },
+    {
+        "label": "DEFAULT_AUTO_FIELD",
+        "kind": 5,
+        "importPath": "orphelinat_project.settings",
+        "description": "orphelinat_project.settings",
+        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [\n        'rest_framework_simplejwt.authentication.JWTAuthentication',  # ✅ pour que Swagger puisse tester les routes JWT\n    ],\n    'DEFAULT_PERMISSION_CLASSES': [\n        'rest_framework.permissions.AllowAny',  # ✅ Swagger et toutes les routes sont publiques",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
