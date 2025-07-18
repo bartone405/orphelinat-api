@@ -1,15 +1,5 @@
-from django.urls import path, include, re_path
+from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from rest_framework import permissions
-from drf_yasg.views import get_schema_view
-from drf_yasg import openapi
-
-from django.http import JsonResponse
-
-def test_view(request):
-    return JsonResponse({"message": "Test OK"})
-
-
 from .views import (
     UsersTbViewSet, OrphelinsTbViewSet, AdoptionsTbViewSet, AdoptantsTbViewSet,
     DocumentsTbViewSet, DonatorsTbViewSet, GiftsTbViewSet, MedicalVisitsTbViewSet,
@@ -36,25 +26,9 @@ router.register(r'actions', ActionsTbViewSet)
 router.register(r'messages', MessagesTbViewSet)
 router.register(r'orphelinats', OrphelinatsTbViewSet)
 
-schema_view = get_schema_view(
-    openapi.Info(
-        title="API Orphelinat",
-        default_version='v1',
-        description="Documentation de l'API REST pour l’orphelinat",
-    ),
-    public=True,
-    permission_classes=[permissions.AllowAny],
-)
-
 urlpatterns = [
-    path('test/', test_view),
     path('', include(router.urls)),
     path('stats/', stats_view, name='stats'),
     path('login/', LoginUserView.as_view(), name='login'),
     path('register/', RegisterUserView.as_view(), name='register'),
-
-    # Swagger documentation routes (JSON, YAML, Swagger UI, Redoc)
-    re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
-    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]

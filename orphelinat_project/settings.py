@@ -164,8 +164,9 @@ else:
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'https://orphelinat-static.onrender.com/'
+STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
@@ -201,9 +202,12 @@ SIMPLE_JWT = {
 
 SWAGGER_SETTINGS = {
     'USE_SESSION_AUTH': False,
+    'JSON_EDITOR': True,             # Pour un éditeur JSON dans Swagger UI
+    'SECURITY_DEFINITIONS': None,   # Pas de sécurité côté Swagger (JWT sera en header)
     'LOGIN_URL': 'login',
     'LOGOUT_URL': 'logout',
 }
+
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 

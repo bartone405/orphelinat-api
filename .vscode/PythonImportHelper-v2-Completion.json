@@ -136,14 +136,6 @@
         "documentation": {}
     },
     {
-        "label": "permissions",
-        "importPath": "rest_framework",
-        "description": "rest_framework",
-        "isExtraImport": true,
-        "detail": "rest_framework",
-        "documentation": {}
-    },
-    {
         "label": "viewsets",
         "importPath": "rest_framework",
         "description": "rest_framework",
@@ -153,6 +145,14 @@
     },
     {
         "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "permissions",
         "importPath": "rest_framework",
         "description": "rest_framework",
         "isExtraImport": true,
@@ -544,7 +544,7 @@
         "documentation": {}
     },
     {
-        "label": "re_path",
+        "label": "path",
         "importPath": "django.urls",
         "description": "django.urls",
         "isExtraImport": true,
@@ -552,7 +552,7 @@
         "documentation": {}
     },
     {
-        "label": "path",
+        "label": "re_path",
         "importPath": "django.urls",
         "description": "django.urls",
         "isExtraImport": true,
@@ -573,14 +573,6 @@
         "description": "rest_framework.routers",
         "isExtraImport": true,
         "detail": "rest_framework.routers",
-        "documentation": {}
-    },
-    {
-        "label": "JsonResponse",
-        "importPath": "django.http",
-        "description": "django.http",
-        "isExtraImport": true,
-        "detail": "django.http",
         "documentation": {}
     },
     {
@@ -631,6 +623,14 @@
         "importPath": "dj_database_url",
         "description": "dj_database_url",
         "detail": "dj_database_url",
+        "documentation": {}
+    },
+    {
+        "label": "JsonResponse",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
         "documentation": {}
     },
     {
@@ -1001,15 +1001,6 @@
         "documentation": {}
     },
     {
-        "label": "test_view",
-        "kind": 2,
-        "importPath": "orphelinat_app.urls",
-        "description": "orphelinat_app.urls",
-        "peekOfCode": "def test_view(request):\n    return JsonResponse({\"message\": \"Test OK\"})\nfrom .views import (\n    UsersTbViewSet, OrphelinsTbViewSet, AdoptionsTbViewSet, AdoptantsTbViewSet,\n    DocumentsTbViewSet, DonatorsTbViewSet, GiftsTbViewSet, MedicalVisitsTbViewSet,\n    EducationTbViewSet, CountryTbViewSet, StatusTbViewSet, RolesTbViewSet,\n    SexTbViewSet, ActionsTbViewSet, MessagesTbViewSet, OrphelinatsTbViewSet,\n    stats_view, LoginUserView, RegisterUserView\n)\nrouter = DefaultRouter()",
-        "detail": "orphelinat_app.urls",
-        "documentation": {}
-    },
-    {
         "label": "router",
         "kind": 5,
         "importPath": "orphelinat_app.urls",
@@ -1019,20 +1010,11 @@
         "documentation": {}
     },
     {
-        "label": "schema_view",
-        "kind": 5,
-        "importPath": "orphelinat_app.urls",
-        "description": "orphelinat_app.urls",
-        "peekOfCode": "schema_view = get_schema_view(\n    openapi.Info(\n        title=\"API Orphelinat\",\n        default_version='v1',\n        description=\"Documentation de l'API REST pour l’orphelinat\",\n    ),\n    public=True,\n    permission_classes=[permissions.AllowAny],\n)\nurlpatterns = [",
-        "detail": "orphelinat_app.urls",
-        "documentation": {}
-    },
-    {
         "label": "urlpatterns",
         "kind": 5,
         "importPath": "orphelinat_app.urls",
         "description": "orphelinat_app.urls",
-        "peekOfCode": "urlpatterns = [\n    path('test/', test_view),\n    path('', include(router.urls)),\n    path('stats/', stats_view, name='stats'),\n    path('login/', LoginUserView.as_view(), name='login'),\n    path('register/', RegisterUserView.as_view(), name='register'),\n    # Swagger documentation routes (JSON, YAML, Swagger UI, Redoc)\n    re_path(r'^swagger(?P<format>\\.json|\\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),\n    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),\n    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),",
+        "peekOfCode": "urlpatterns = [\n    path('', include(router.urls)),\n    path('stats/', stats_view, name='stats'),\n    path('login/', LoginUserView.as_view(), name='login'),\n    path('register/', RegisterUserView.as_view(), name='register'),\n]",
         "detail": "orphelinat_app.urls",
         "documentation": {}
     },
@@ -1356,7 +1338,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\ncors_origins = os.environ.get('CORS_ALLOWED_ORIGINS', '')\nif cors_origins:\n    CORS_ALLOWED_ORIGINS = [origin.strip() for origin in cors_origins.split(',') if origin.strip()]\nelse:\n    CORS_ALLOWED_ORIGINS = []\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'https://orphelinat-static.onrender.com/'",
+        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\ncors_origins = os.environ.get('CORS_ALLOWED_ORIGINS', '')\nif cors_origins:\n    CORS_ALLOWED_ORIGINS = [origin.strip() for origin in cors_origins.split(',') if origin.strip()]\nelse:\n    CORS_ALLOWED_ORIGINS = []\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = '/static/'",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1365,7 +1347,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "USE_TZ = True\ncors_origins = os.environ.get('CORS_ALLOWED_ORIGINS', '')\nif cors_origins:\n    CORS_ALLOWED_ORIGINS = [origin.strip() for origin in cors_origins.split(',') if origin.strip()]\nelse:\n    CORS_ALLOWED_ORIGINS = []\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'https://orphelinat-static.onrender.com/'\nSTATIC_ROOT = BASE_DIR / 'staticfiles'",
+        "peekOfCode": "USE_TZ = True\ncors_origins = os.environ.get('CORS_ALLOWED_ORIGINS', '')\nif cors_origins:\n    CORS_ALLOWED_ORIGINS = [origin.strip() for origin in cors_origins.split(',') if origin.strip()]\nelse:\n    CORS_ALLOWED_ORIGINS = []\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = '/static/'\nSTATIC_ROOT = BASE_DIR / 'staticfiles'",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1374,7 +1356,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "cors_origins = os.environ.get('CORS_ALLOWED_ORIGINS', '')\nif cors_origins:\n    CORS_ALLOWED_ORIGINS = [origin.strip() for origin in cors_origins.split(',') if origin.strip()]\nelse:\n    CORS_ALLOWED_ORIGINS = []\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'https://orphelinat-static.onrender.com/'\nSTATIC_ROOT = BASE_DIR / 'staticfiles'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "cors_origins = os.environ.get('CORS_ALLOWED_ORIGINS', '')\nif cors_origins:\n    CORS_ALLOWED_ORIGINS = [origin.strip() for origin in cors_origins.split(',') if origin.strip()]\nelse:\n    CORS_ALLOWED_ORIGINS = []\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = '/static/'\nSTATIC_ROOT = BASE_DIR / 'staticfiles'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1383,7 +1365,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "STATIC_URL = 'https://orphelinat-static.onrender.com/'\nSTATIC_ROOT = BASE_DIR / 'staticfiles'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [\n        'rest_framework_simplejwt.authentication.JWTAuthentication',  # ✅ pour que Swagger puisse tester les routes JWT\n    ],",
+        "peekOfCode": "STATIC_URL = '/static/'\nSTATIC_ROOT = BASE_DIR / 'staticfiles'\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [\n        'rest_framework_simplejwt.authentication.JWTAuthentication',  # ✅ pour que Swagger puisse tester les routes JWT\n    ],",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1428,7 +1410,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "SIMPLE_JWT = {\n    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),\n    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),\n    'AUTH_HEADER_TYPES': ('Bearer',),\n}\n#AUTH_USER_MODEL = 'orphelinat_app.UsersTb'\nSWAGGER_SETTINGS = {\n    'USE_SESSION_AUTH': False,\n    'LOGIN_URL': 'login',\n    'LOGOUT_URL': 'logout',",
+        "peekOfCode": "SIMPLE_JWT = {\n    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),\n    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),\n    'AUTH_HEADER_TYPES': ('Bearer',),\n}\n#AUTH_USER_MODEL = 'orphelinat_app.UsersTb'\nSWAGGER_SETTINGS = {\n    'USE_SESSION_AUTH': False,\n    'JSON_EDITOR': True,             # Pour un éditeur JSON dans Swagger UI\n    'SECURITY_DEFINITIONS': None,   # Pas de sécurité côté Swagger (JWT sera en header)",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1437,7 +1419,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "#AUTH_USER_MODEL = 'orphelinat_app.UsersTb'\nSWAGGER_SETTINGS = {\n    'USE_SESSION_AUTH': False,\n    'LOGIN_URL': 'login',\n    'LOGOUT_URL': 'logout',\n}\nSTATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'",
+        "peekOfCode": "#AUTH_USER_MODEL = 'orphelinat_app.UsersTb'\nSWAGGER_SETTINGS = {\n    'USE_SESSION_AUTH': False,\n    'JSON_EDITOR': True,             # Pour un éditeur JSON dans Swagger UI\n    'SECURITY_DEFINITIONS': None,   # Pas de sécurité côté Swagger (JWT sera en header)\n    'LOGIN_URL': 'login',\n    'LOGOUT_URL': 'logout',\n}\nSTATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1446,7 +1428,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "SWAGGER_SETTINGS = {\n    'USE_SESSION_AUTH': False,\n    'LOGIN_URL': 'login',\n    'LOGOUT_URL': 'logout',\n}\nSTATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'",
+        "peekOfCode": "SWAGGER_SETTINGS = {\n    'USE_SESSION_AUTH': False,\n    'JSON_EDITOR': True,             # Pour un éditeur JSON dans Swagger UI\n    'SECURITY_DEFINITIONS': None,   # Pas de sécurité côté Swagger (JWT sera en header)\n    'LOGIN_URL': 'login',\n    'LOGOUT_URL': 'logout',\n}\nSTATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1460,11 +1442,20 @@
         "documentation": {}
     },
     {
+        "label": "schema_view",
+        "kind": 5,
+        "importPath": "orphelinat_project.urls",
+        "description": "orphelinat_project.urls",
+        "peekOfCode": "schema_view = get_schema_view(\n   openapi.Info(\n      title=\"API Orphelinat\",\n      default_version='v1',\n      description=\"Documentation API Orphelinat\",\n      terms_of_service=\"https://www.google.com/policies/terms/\",\n      contact=openapi.Contact(email=\"contact@orphelinat.com\"),\n      license=openapi.License(name=\"BSD License\"),\n   ),\n   public=True,",
+        "detail": "orphelinat_project.urls",
+        "documentation": {}
+    },
+    {
         "label": "urlpatterns",
         "kind": 5,
         "importPath": "orphelinat_project.urls",
         "description": "orphelinat_project.urls",
-        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('api/', include('orphelinat_app.urls')),  # Swagger est dans orphelinat_app.urls\n    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),\n]",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    # Token refresh JWT\n    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),\n    # Routes API principales\n    path('api/', include('orphelinat_app.urls')),\n    # Routes Swagger pour doc API\n    re_path(r'^api/swagger(?P<format>\\.json|\\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),\n    path('api/swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),\n    path('api/redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),",
         "detail": "orphelinat_project.urls",
         "documentation": {}
     },
