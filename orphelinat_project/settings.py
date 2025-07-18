@@ -177,16 +177,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',  # ✅ pour que Swagger puisse tester les routes JWT
-    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [],  # ✅ Pas d'authentification
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',  # ✅ Swagger et toutes les routes sont publiques
+        'rest_framework.permissions.AllowAny',  # ✅ Tout le monde a accès
     ],
     'DEFAULT_FILTER_BACKENDS': [
         'django_filters.rest_framework.DjangoFilterBackend',
     ],
 }
+
 
 
 
@@ -200,13 +199,7 @@ SIMPLE_JWT = {
 
 #AUTH_USER_MODEL = 'orphelinat_app.UsersTb'
 
-SWAGGER_SETTINGS = {
-    'USE_SESSION_AUTH': False,
-    'JSON_EDITOR': True,             # Pour un éditeur JSON dans Swagger UI
-    'SECURITY_DEFINITIONS': None,   # Pas de sécurité côté Swagger (JWT sera en header)
-    'LOGIN_URL': 'login',
-    'LOGOUT_URL': 'logout',
-}
+
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 

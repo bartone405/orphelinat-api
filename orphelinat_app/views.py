@@ -1,3 +1,4 @@
+
 from rest_framework import viewsets, status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -20,9 +21,7 @@ from orphelinat_app.serializers import (
     OrphelinatsTbSerializer
 )
 
-# ============================
-# ViewSets API REST classiques
-# ============================
+# === ViewSets REST ===
 
 class UsersTbViewSet(viewsets.ModelViewSet):
     queryset = UsersTb.objects.all()
@@ -88,9 +87,7 @@ class OrphelinatsTbViewSet(viewsets.ModelViewSet):
     queryset = OrphelinatsTb.objects.all()
     serializer_class = OrphelinatsTbSerializer
 
-# ============================
-# Vue personnalisée : statistiques
-# ============================
+# === Vue stats personnalisée ===
 
 @api_view(['GET'])
 def stats_view(request):
@@ -103,9 +100,7 @@ def stats_view(request):
         "total_utilisateurs": users_count
     })
 
-# ============================
-# Vue personnalisée : Login utilisateur
-# ============================
+# === Login personnalisé ===
 
 class LoginUserView(APIView):
     def post(self, request):
@@ -128,9 +123,7 @@ class LoginUserView(APIView):
         except UsersTb.DoesNotExist:
             return Response({"error": "Utilisateur non trouvé"}, status=404)
 
-# ============================
-# Vue personnalisée : Enregistrement utilisateur
-# ============================
+# === Enregistrement personnalisé ===
 
 class RegisterUserView(APIView):
     def post(self, request):
