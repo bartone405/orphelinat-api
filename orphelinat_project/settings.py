@@ -96,7 +96,7 @@ WSGI_APPLICATION = 'orphelinat_project.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgresql://postgres.qrzetjrzctzxopxenhet:Gedeon%401234@aws-0-eu-north-1.pooler.supabase.com:6543/postgres',
+        default=os.getenv('DATABASE_URL', 'postgresql://postgres.qrzetjrzctzxopxenhet:Gedeon%401234@aws-0-eu-north-1.pooler.supabase.com:6543/postgres'),
         conn_max_age=600,
         ssl_require=True,
     )

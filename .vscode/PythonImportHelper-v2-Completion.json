@@ -601,22 +601,6 @@
         "documentation": {}
     },
     {
-        "label": "get_wsgi_application",
-        "importPath": "django.core.wsgi",
-        "description": "django.core.wsgi",
-        "isExtraImport": true,
-        "detail": "django.core.wsgi",
-        "documentation": {}
-    },
-    {
-        "label": "get_wsgi_application",
-        "importPath": "django.core.wsgi",
-        "description": "django.core.wsgi",
-        "isExtraImport": true,
-        "detail": "django.core.wsgi",
-        "documentation": {}
-    },
-    {
         "label": "get_asgi_application",
         "importPath": "django.core.asgi",
         "description": "django.core.asgi",
@@ -655,6 +639,14 @@
         "description": "rest_framework_simplejwt.views",
         "isExtraImport": true,
         "detail": "rest_framework_simplejwt.views",
+        "documentation": {}
+    },
+    {
+        "label": "get_wsgi_application",
+        "importPath": "django.core.wsgi",
+        "description": "django.core.wsgi",
+        "isExtraImport": true,
+        "detail": "django.core.wsgi",
         "documentation": {}
     },
     {
@@ -1218,15 +1210,6 @@
     {
         "label": "application",
         "kind": 5,
-        "importPath": "orphelinat_app.wsgi",
-        "description": "orphelinat_app.wsgi",
-        "peekOfCode": "application = get_wsgi_application()",
-        "detail": "orphelinat_app.wsgi",
-        "documentation": {}
-    },
-    {
-        "label": "application",
-        "kind": 5,
         "importPath": "orphelinat_project.asgi",
         "description": "orphelinat_project.asgi",
         "peekOfCode": "application = get_asgi_application()",
@@ -1319,7 +1302,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "WSGI_APPLICATION = 'orphelinat_project.wsgi.application'\n# Database\n# https://docs.djangoproject.com/en/5.2/ref/settings/#databases\nDATABASES = {\n    'default': dj_database_url.config(\n        default='postgresql://postgres.qrzetjrzctzxopxenhet:Gedeon%401234@aws-0-eu-north-1.pooler.supabase.com:6543/postgres',\n        conn_max_age=600,\n        ssl_require=True,\n    )\n}",
+        "peekOfCode": "WSGI_APPLICATION = 'orphelinat_project.wsgi.application'\n# Database\n# https://docs.djangoproject.com/en/5.2/ref/settings/#databases\nDATABASES = {\n    'default': dj_database_url.config(\n        default=os.getenv('DATABASE_URL', 'postgresql://postgres.qrzetjrzctzxopxenhet:Gedeon%401234@aws-0-eu-north-1.pooler.supabase.com:6543/postgres'),\n        conn_max_age=600,\n        ssl_require=True,\n    )\n}",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1328,7 +1311,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "DATABASES = {\n    'default': dj_database_url.config(\n        default='postgresql://postgres.qrzetjrzctzxopxenhet:Gedeon%401234@aws-0-eu-north-1.pooler.supabase.com:6543/postgres',\n        conn_max_age=600,\n        ssl_require=True,\n    )\n}\n#DATABASES = {\n   # 'default': {\n       # 'ENGINE': 'django.db.backends.postgresql',",
+        "peekOfCode": "DATABASES = {\n    'default': dj_database_url.config(\n        default=os.getenv('DATABASE_URL', 'postgresql://postgres.qrzetjrzctzxopxenhet:Gedeon%401234@aws-0-eu-north-1.pooler.supabase.com:6543/postgres'),\n        conn_max_age=600,\n        ssl_require=True,\n    )\n}\n#DATABASES = {\n   # 'default': {\n       # 'ENGINE': 'django.db.backends.postgresql',",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
