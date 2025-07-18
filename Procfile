@@ -1,1 +1,1 @@
-web: gunicorn orphelinat_project.wsgi --log-file -
+web: gunicorn orphelinat_project.wsgi:application --log-file -
