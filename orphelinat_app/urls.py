@@ -4,7 +4,7 @@ from .views import *
 from .registration import RegisterUserView
 from .authentication import LoginUserView
 
-# 🎯 Routeur DRF
+# 🎯 Routeur DRF pour les ViewSets CRUD
 router = DefaultRouter()
 router.register(r'users', UsersTbViewSet)
 router.register(r'orphelins', OrphelinsTbViewSet)
@@ -25,8 +25,8 @@ router.register(r'orphelinats', OrphelinatsTbViewSet)
 
 # 🌐 URLs de l’application
 urlpatterns = [
-    path('', include(router.urls)),
-    path('stats/', stats_view, name='stats'),
-    path('register/', RegisterUserView.as_view(), name='user-register'),
-    path('login/', LoginUserView.as_view(), name='user-login'),
+    path('', include(router.urls)),                                 # Routes CRUD automatiques
+    path('stats/', stats_view, name='stats'),                       # Endpoint statistiques
+    path('register/', RegisterUserView.as_view(), name='user-register'),  # Inscription utilisateur
+    path('login/', LoginUserView.as_view(), name='user-login'),     # Authentification JWT personnalisée
 ]

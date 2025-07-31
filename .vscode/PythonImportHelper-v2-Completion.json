@@ -136,11 +136,11 @@
         "documentation": {}
     },
     {
-        "label": "check_password",
-        "importPath": "django.contrib.auth.hashers",
-        "description": "django.contrib.auth.hashers",
+        "label": "User",
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
         "isExtraImport": true,
-        "detail": "django.contrib.auth.hashers",
+        "detail": "django.contrib.auth.models",
         "documentation": {}
     },
     {
@@ -321,7 +321,7 @@
         "kind": 6,
         "importPath": "orphelinat_app.authentication",
         "description": "orphelinat_app.authentication",
-        "peekOfCode": "class LoginUserView(APIView):\n    def post(self, request):\n        username = request.data.get(\"username\")\n        password = request.data.get(\"password\")\n        try:\n            user = UsersTb.objects.get(username=username)\n        except UsersTb.DoesNotExist:\n            return Response({'error': 'Utilisateur non trouvé'}, status=status.HTTP_404_NOT_FOUND)\n        if check_password(password, user.user_pswd):\n            refresh = RefreshToken.for_user(user)",
+        "peekOfCode": "class LoginUserView(APIView):\n    def post(self, request):\n        serializer = LoginSerializer(data=request.data)  # ✅ Validation des données\n        if not serializer.is_valid():\n            return Response({'error': 'Veuillez fournir username et password'}, status=status.HTTP_400_BAD_REQUEST)\n        username = serializer.validated_data.get(\"username\")\n        password = serializer.validated_data.get(\"password\")\n        try:\n            user_obj = UsersTb.objects.get(username=username)\n        except UsersTb.DoesNotExist:",
         "detail": "orphelinat_app.authentication",
         "documentation": {}
     },
@@ -699,7 +699,7 @@
         "kind": 6,
         "importPath": "orphelinat_app.serializers",
         "description": "orphelinat_app.serializers",
-        "peekOfCode": "class MessagesTbSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = MessagesTb\n        fields = '__all__'\nclass OrphelinatsTbSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = OrphelinatsTb\n        fields = '__all__'",
+        "peekOfCode": "class MessagesTbSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = MessagesTb\n        fields = '__all__'\nclass OrphelinatsTbSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = OrphelinatsTb\n        fields = '__all__'\n# ✅ Serializer pour la connexion personnalisée\nclass LoginSerializer(serializers.Serializer):",
         "detail": "orphelinat_app.serializers",
         "documentation": {}
     },
@@ -708,7 +708,16 @@
         "kind": 6,
         "importPath": "orphelinat_app.serializers",
         "description": "orphelinat_app.serializers",
-        "peekOfCode": "class OrphelinatsTbSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = OrphelinatsTb\n        fields = '__all__'",
+        "peekOfCode": "class OrphelinatsTbSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = OrphelinatsTb\n        fields = '__all__'\n# ✅ Serializer pour la connexion personnalisée\nclass LoginSerializer(serializers.Serializer):\n    username = serializers.CharField()\n    password = serializers.CharField()",
+        "detail": "orphelinat_app.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "LoginSerializer",
+        "kind": 6,
+        "importPath": "orphelinat_app.serializers",
+        "description": "orphelinat_app.serializers",
+        "peekOfCode": "class LoginSerializer(serializers.Serializer):\n    username = serializers.CharField()\n    password = serializers.CharField()",
         "detail": "orphelinat_app.serializers",
         "documentation": {}
     },
@@ -726,7 +735,7 @@
         "kind": 5,
         "importPath": "orphelinat_app.urls",
         "description": "orphelinat_app.urls",
-        "peekOfCode": "urlpatterns = [\n    path('', include(router.urls)),\n    path('stats/', stats_view, name='stats'),\n    path('register/', RegisterUserView.as_view(), name='user-register'),\n    path('login/', LoginUserView.as_view(), name='user-login'),\n]",
+        "peekOfCode": "urlpatterns = [\n    path('', include(router.urls)),                               # Routes CRUD automatiques\n    path('stats/', stats_view, name='stats'),                     # Endpoint statistiques\n    path('register/', RegisterUserView.as_view(), name='user-register'),  # Inscription utilisateur\n    path('login/', LoginUserView.as_view(), name='user-login'),            # Authentification JWT personnalisée\n]",
         "detail": "orphelinat_app.urls",
         "documentation": {}
     },
@@ -1023,7 +1032,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "LANGUAGE_CODE = 'en-us'\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\nCORS_ALLOW_ALL_ORIGINS = True \n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field",
+        "peekOfCode": "LANGUAGE_CODE = 'en-us'\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\nCORS_ALLOW_ALL_ORIGINS = True \n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = '/static/'\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\n# Default primary key field type",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1032,7 +1041,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\nCORS_ALLOW_ALL_ORIGINS = True \n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\nCORS_ALLOW_ALL_ORIGINS = True \n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = '/static/'\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1041,7 +1050,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\nCORS_ALLOW_ALL_ORIGINS = True \n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {",
+        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\nCORS_ALLOW_ALL_ORIGINS = True \n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = '/static/'\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1050,7 +1059,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "USE_TZ = True\nCORS_ALLOW_ALL_ORIGINS = True \n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [",
+        "peekOfCode": "USE_TZ = True\nCORS_ALLOW_ALL_ORIGINS = True \n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = '/static/'\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1059,7 +1068,7 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "CORS_ALLOW_ALL_ORIGINS = True \n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [\n        'rest_framework_simplejwt.authentication.JWTAuthentication',",
+        "peekOfCode": "CORS_ALLOW_ALL_ORIGINS = True \n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = '/static/'\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1068,7 +1077,16 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "STATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [\n        'rest_framework_simplejwt.authentication.JWTAuthentication',\n    ],\n    'DEFAULT_PERMISSION_CLASSES': [\n        'rest_framework.permissions.AllowAny',  ",
+        "peekOfCode": "STATIC_URL = '/static/'\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [\n        'rest_framework_simplejwt.authentication.JWTAuthentication',\n    ],\n    'DEFAULT_PERMISSION_CLASSES': [",
+        "detail": "orphelinat_project.settings",
+        "documentation": {}
+    },
+    {
+        "label": "STATIC_ROOT",
+        "kind": 5,
+        "importPath": "orphelinat_project.settings",
+        "description": "orphelinat_project.settings",
+        "peekOfCode": "STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': [\n        'rest_framework_simplejwt.authentication.JWTAuthentication',\n    ],\n    'DEFAULT_PERMISSION_CLASSES': [\n        'rest_framework.permissions.AllowAny',  ",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },
@@ -1095,7 +1113,16 @@
         "kind": 5,
         "importPath": "orphelinat_project.settings",
         "description": "orphelinat_project.settings",
-        "peekOfCode": "SWAGGER_SETTINGS = {\n    'SECURITY_DEFINITIONS': {\n        'Bearer': {\n            'type': 'apiKey',\n            'name': 'Authorization',\n            'in': 'header'\n        }\n    },\n}",
+        "peekOfCode": "SWAGGER_SETTINGS = {\n    'SECURITY_DEFINITIONS': {\n        'Bearer': {\n            'type': 'apiKey',\n            'name': 'Authorization',\n            'in': 'header'\n        }\n    },\n}\n# WhiteNoise pour servir les fichiers statiques",
+        "detail": "orphelinat_project.settings",
+        "documentation": {}
+    },
+    {
+        "label": "STATICFILES_STORAGE",
+        "kind": 5,
+        "importPath": "orphelinat_project.settings",
+        "description": "orphelinat_project.settings",
+        "peekOfCode": "STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'",
         "detail": "orphelinat_project.settings",
         "documentation": {}
     },

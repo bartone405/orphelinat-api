@@ -80,3 +80,8 @@ class OrphelinatsTbSerializer(serializers.ModelSerializer):
     class Meta:
         model = OrphelinatsTb
         fields = '__all__'
+
+# Serializer pour la connexion personnalisée
+class LoginSerializer(serializers.Serializer):
+    username = serializers.CharField()
+    password = serializers.CharField()
